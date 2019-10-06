@@ -51,7 +51,7 @@ class Login extends CI_Controller {
 	{
 		$this->session->unset_userdata('username');
 		$this->session->unset_userdata('jenis_user');
-		$this->session->unset_userdata('nama');
+		$this->session->unset_userdata('alias');
 		$this->session->unset_userdata('id');
 		$this->session->unset_userdata('logged_in');
 

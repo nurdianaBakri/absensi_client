@@ -36,6 +36,12 @@
         </li>
 
         <li>
+          <a href="<?php echo base_url()."InputRekapAbsensi"; ?>">
+            <i class="fa fa-archive"></i><span>Input Rekap Absensi</span>
+          </a>
+        </li>
+
+        <li>
           <a href="<?php echo base_url()."PenilaianDosen"; ?>">
             <i class="fa fa-area-chart"></i><span>Penilaian Dosen</span>
           </a>

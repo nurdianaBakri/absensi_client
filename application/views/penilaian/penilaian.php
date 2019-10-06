@@ -40,7 +40,7 @@
                   <thead>
                   <tr>
                     <th>No.</th>
-                    <th>Username</th>
+                    <th>NIK</th>
                     <th>Nama</th>
                     <th>Aksi</th>
                   </tr>
@@ -55,8 +55,13 @@
                       ?>
                         <tr>
                           <td><?php echo $no++; ?></td>
-                          <td><?php echo $key['username']; ?></td>
-                          <td><?php echo $key['nama']; ?></td>
+                          <td><?php echo $key['nik']; ?></td>
+                          <td><?php
+                              //PRINT NAMA SESUAI DENGAN NIK
+                              $this->db->where('nik', $key['nik']);
+                              $user = $this->db->get('user')->row_array();
+                              echo $user['first_name']." ".$user['last_name'];?></td>
+
                           <td>
                               <a href="#" class="btn btn-success"> Nilai</a>
                           </td>
@@ -66,7 +71,7 @@
                 <tfoot>
                 <tr>
                     <th>No.</th>
-                    <th>Username</th>
+                    <th>NIK</th>
                     <th>Nama</th>
                     <th>Aksi</th>
                 </tr>

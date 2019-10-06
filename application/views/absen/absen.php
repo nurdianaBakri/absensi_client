@@ -29,19 +29,24 @@
             <div class="box-header">
               
               <h3 class="box-title">
-                <a  href="<?php echo base_url()."index.php/web/absen/generate"; ?>" class="btn btn-primary"><i class="fa fa-refresh"></i> Generate Absen</a>
+                <a target="_blank" href="<?php echo base_url()."AbsensiCtrl/dataAwal"; ?>" class="btn btn-success"><i class="fa fa-download"></i> Input Absen</a>
               </h3>
 
             </div>
             <!-- /.box-header -->
             <div class="box-body">
+
+              <div class="alert alert-info" role="alert">
+                Informasi Absensi pegawai Program Studi teknik informatika hari ini (<?= date('d, M Y') ?>)
+              </div>
+
               <table id="example1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
                     <th>No.</th>
                     <th>NIP</th>
                     <th>Nama</th>
-                    <th>Aksi</th>
+                    <th>Status Absensi</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -55,9 +60,16 @@
                           <tr>
                             <td><?php echo "  ".$no++; ?></td>
                             <td><?php echo "  ".$key['nik']; ?></td>
-                            <td><?php echo "  ".$key['nama']; ?></td>
+                            <td><?php
+
+                            // var_dump($key['nik']);
+
+                              //PRINT NAMA SESUAI DENGAN NIK
+                              $this->db->where('nik', $key['nik']);
+                              $user = $this->db->get('user')->row_array();
+                              echo $user['first_name']." ".$user['last_name'];?></td>
                             <td>
-                                <a href="<?php echo base_url()."index.php/web/User/reset/".$key['username']?>" class="btn btn-warning"><i class="fa fa-key"></i> Reset Password</a>
+                                <a href="<?php echo base_url()."AbsensiCtrl/detail/".$key['id_absen']?>" class="btn btn-success"><i class="fa fa-list"></i> Detail</a>
                             </td>
                           </tr>
                       <?php 
@@ -69,7 +81,7 @@
                     <th>No.</th>
                     <th>NIP</th>
                     <th>nama</th>
-                    <th>Aksi</th>
+                    <th>Status Absensi</th>
                 </tr>
                 </tfoot>
               </table>

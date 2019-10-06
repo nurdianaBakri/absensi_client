@@ -137,4 +137,5 @@ $autoload['model'] = array(
 	,'M_user'
 	,'M_absensi'
 	,'M_Penilaian'
+	,'M_mode'
 );

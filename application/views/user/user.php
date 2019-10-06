@@ -60,7 +60,7 @@
                         <tr>
                           <td><?php echo $no++; ?></td>
                           <td><?php echo $key['username']; ?></td>
-                          <td><?php echo $key['nama']; ?></td>
+                          <td><?php echo $key['alias']; ?></td>
                           <td><?php 
                           if ($key['jenis_user']==1) {
                             echo "Admin";
@@ -74,7 +74,8 @@
                           }
                           ?></td>
                           <td>
-                              <a href="<?php echo base_url()."User/reset/".$key['username']?>" class="btn btn-warning"><i class="fa fa-key"></i> Reset Password</a>
+                              <a href="<?php echo base_url()."User/hapus/".$key['id_user']?>" class="btn btn-danger"><i class="fa fa-trash"></i>hapus</a>
+                              <a href="<?php echo base_url()."User/detail/".$key['id_user']?>" class="btn btn-success"><i class="fa fa-list"></i> Detail</a>
                           </td>
                         </tr>
                     <?php }  ?>

@@ -17,7 +17,7 @@ class PenilaianDosen extends CI_Controller {
     {
         $getallData['title'] = "Penilaian Dosen";
         $getallData['data'] = "";
-        $data= $this->M_Penilaian->getAll();
+        $data= $this->M_user->getAll();
         if ($data->num_rows()>0) 
         {
             $getallData['data']=$data->result_array();

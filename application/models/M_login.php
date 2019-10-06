@@ -14,8 +14,8 @@ class M_login extends CI_Model
             $arrayName = array(
                 'username' => $row['username'],
                 'jenis_user' => $row['jenis_user'],
-                'nama' => $row['nama'],
-                'id' => $row['idu_user'],
+                'nama' => $row['alias'],
+                'id' => $row['id_user'],
                 'logged_in'=>TRUE,
                 'berhasil'=>"yes",
             );

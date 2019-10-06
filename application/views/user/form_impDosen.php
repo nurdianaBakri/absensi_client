@@ -46,17 +46,17 @@
 				  Silahkan ambil data user (pegawai PSTI) dari sistem absensi fingerprint, kemudian import data tersebut ke sini.
 				</div>
               
-              <form action="<?php echo base_url()."User/doImport" ?>" method="POST" >
+              <form action="<?php echo base_url()."User/cek_file" ?>" method="POST" enctype="multipart/form-data" >
 
               	<div class="form-group row">
-				    <label for="file" class="col-sm-1 col-form-label">File </label>
-				    <div class="col-sm-9">
-				      <input type="file" readonly class="form-control-plaintext" id="file">
-				    </div>
-				    <div class="col-sm-2">
-				      <input type="submit" name="Import" class="btn btn-success btn-block">
-				    </div>
-				  </div>			
+      				    <label for="fileName" class="col-sm-2 col-form-label">File </label>
+      				    <div class="col-sm-6">
+      				      <input type="file" readonly class="form-control-plaintext" id="fileName" name="fileName">
+      				    </div>
+      				    <div class="col-sm-4">
+      				       <input class="btn btn-success btn-block" type="submit" name="submit" value="Perview">
+      				    </div>
+      				  </div>			
 
               </form>
             </div>

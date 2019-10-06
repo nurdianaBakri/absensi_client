@@ -30,6 +30,7 @@ class AbsensiCtrl extends CI_Controller {
         {
             $getallData['data'] = array();
         }
+        // var_dump($data);
 
         $this->load->view("include/header",$getallData);
         $this->load->view("include/topmenu");
@@ -60,6 +61,73 @@ class AbsensiCtrl extends CI_Controller {
         }
         var_dump($balikan);
     }
+
+    public function doTambah()
+    {
+        $data = array(
+            'nik' =>$this->input->post('nik'), 
+            'io_mode' =>$this->input->post('status'), 
+        );
+
+        $insert = $this->M_absensi->insert($data);
+        if ($insert==TRUE)
+        {
+            $this->session->set_flashdata('pesan',"Data absensi ".$nik." Berhasil di input");
+        }
+        else
+        {
+            $this->session->set_flashdata('pesan',"Data absensi ".$nik." gagal di input, silahkan coba lagi");
+
+        }
+        redirect('AbsensiCtrl');
+    }
+
+    public function formtambah($nik)
+    {
+        $getallData['title'] = "Tambah Absen hari ini (".date('d, M Y').")";
+        $where = array('nik' => $nik);
+
+        $cek_nik=$this->M_user->detail($where);
+        if ($cek_nik->num_rows()>0)
+        {
+            $getallData['data']=$cek_nik->row_array();
+        }
+        else
+        {
+            $this->session->set_flashdata('pesan',"Data ".$nik." Tidak ditemukan");
+        }
+
+        $getallData['mode']=$this->M_mode->getAll()->result_array();
+
+
+        $this->load->view("include/header",$getallData);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("absen/tambah" ,$getallData);
+        $this->load->view("include/footer");
+    }
+
+    function dataAwal()
+    {
+        $getallData['title'] = "Data Dosen";
+        $getallData['data'] = "";
+        $data= $this->M_user->getAll();
+        if ($data->num_rows()>0) 
+        {
+            $getallData['data']=$data->result_array();
+        }
+        else
+        {
+            $getallData['data'] = array();
+        }
+
+        $this->load->view("include/header",$getallData);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("absen/data_awal" ,$getallData);
+        $this->load->view("include/footer");
+    }
+
 
    
 }
