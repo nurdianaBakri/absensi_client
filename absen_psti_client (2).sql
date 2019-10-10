@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 07, 2019 at 12:25 AM
+-- Generation Time: Oct 10, 2019 at 12:54 PM
 -- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- PHP Version: 7.3.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -40,28 +40,15 @@ CREATE TABLE `absensi` (
 --
 
 INSERT INTO `absensi` (`id_absen`, `nik`, `io_mode`, `tanggal_scan`) VALUES
-(1, '197311302000031001', 0, '2019-09-01 14:00:00'),
-(2, '197210191999032001', 0, '2019-09-02 14:00:00'),
-(3, '199012182012121002', 0, '2019-09-03 14:00:00'),
-(4, '197311302000031001', 2, '2019-09-04 19:00:00'),
-(5, '197210191999032001', 2, '2019-09-05 19:01:00'),
-(6, '199012182012121002', 2, '2019-09-06 19:03:00'),
-(7, '197311302000031001', 1, '2019-09-07 23:00:00'),
-(8, '197210191999032001', 1, '2019-09-08 23:01:00'),
-(9, '199012182012121002', 1, '2019-09-09 23:03:00'),
-(10, '197311302000031001', 0, '2019-09-01 14:00:00'),
-(11, '197210191999032001', 0, '2019-09-02 14:00:00'),
-(12, '199012182012121002', 0, '2019-09-03 14:00:00'),
-(13, '197311302000031001', 2, '2019-09-04 19:00:00'),
-(14, '197210191999032001', 2, '2019-09-05 19:01:00'),
-(15, '199012182012121002', 2, '2019-09-06 19:03:00'),
-(16, '197311302000031001', 1, '2019-09-07 23:00:00'),
-(17, '197210191999032001', 1, '2019-09-08 23:01:00'),
-(18, '199012182012121002', 1, '2019-09-09 23:03:00'),
-(19, '197210191999032001', 0, '2019-10-06 17:38:53'),
-(20, '198507072014042001', 1, '2019-10-06 17:41:43'),
-(21, '198609132015041001', 0, '2019-10-06 17:42:24'),
-(22, '197210191999032001', 2, '2019-10-06 17:44:45');
+(1, '197311302000031001', 0, '2019-10-09 23:00:00'),
+(2, '197210191999032001', 0, '2019-10-09 23:00:00'),
+(3, '199012182012121002', 0, '2019-10-09 23:00:00'),
+(4, '197311302000031001', 2, '2019-10-10 04:00:00'),
+(5, '197210191999032001', 2, '2019-10-10 04:01:00'),
+(6, '199012182012121002', 2, '2019-10-10 04:03:00'),
+(7, '197311302000031001', 1, '2019-10-10 08:00:00'),
+(8, '197210191999032001', 1, '2019-10-10 08:01:00'),
+(9, '199012182012121002', 1, '2019-10-10 08:03:00');
 
 -- --------------------------------------------------------
 
@@ -137,13 +124,16 @@ INSERT INTO `user` (`id_user`, `nik`, `first_name`, `last_name`, `gender`, `alia
 (11, '198211182015041001', 'I', 'Wayan Agus Arimbawa, ST.,M.Eng.', 0, 'I Wayan Agus Arimbawa, S', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
 (12, '198311252015041002', 'Moh.', 'Ali Albar, ST.,M.Eng.', 0, 'Moh. Ali Albar, ST.,M.En', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
 (13, '197902242005011001', 'Azwar', 'Faridi, ST', 0, 'Azwar Faridi., ST', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(15, '-', 'Baiq', 'Eny Mariana, SE ', 0, 'Baiq Eny Mariana, SE ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(16, '-', 'Ahmad', 'Zafrullah M, ST., M.Eng.', 0, 'Ahmad Zafrullah M. ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
+(15, '1000001', 'Baiq', 'Eny Mariana, SE ', 0, 'Baiq Eny Mariana, SE ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
+(16, '1000002', 'Ahmad', 'Zafrullah M, ST., M.Eng.', 0, 'Ahmad Zafrullah M. ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
 (17, '198409192018031001', 'Dr. Eng. IGP Wirarama', ' W W, ST., MT.', 0, 'I Gde Putu Wirarama Weda', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(18, '-', 'Rival', ' Biasrori, S.Kom', 0, 'Rival  Biasrori', 1, 'rival', '21232f297a57a5a743894a0e4a801fc3', 0),
+(18, '1000004', 'Rival', ' Biasrori, S.Kom', 0, 'Rival  Biasrori', 1, 'rival', '21232f297a57a5a743894a0e4a801fc3', 0),
 (19, '199402202019031004', 'Arik', 'Aranta, S.Kom., M.Kom', 0, 'Arik Aranta', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
 (20, '199203232019031012', 'Gibran', 'Satya Nugraha, S.Kom., M.Eng.', 0, 'Gibran Satya Nugraha', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(21, '-', 'Ramaditia', 'Dwiyansaputra, S.T., M.Eng.', 0, 'Ramaditia Dwiyansaputra', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0);
+(21, '1000004', 'Ramaditia', 'Dwiyansaputra, S.T., M.Eng.', 0, 'Ramaditia Dwiyansaputra', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
+(28, '00001', 'M.', 'Arif', 0, 'boy arista', 1, 'arif', '21232f297a57a5a743894a0e4a801fc3', 0),
+(29, '00002', 'Boy', 'Arista', 0, 'boy arista', 2, 'boy', '21232f297a57a5a743894a0e4a801fc3', 0),
+(30, '00003', 'Anang', 'Nugroho', 0, 'Anang Nugroho', 3, 'anang', '21232f297a57a5a743894a0e4a801fc3', 0);
 
 --
 -- Indexes for dumped tables
@@ -181,7 +171,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `nilai`
@@ -193,7 +183,7 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -4,7 +4,7 @@
     <section class="sidebar">
       <!-- Sidebar user panel -->
       <?php $id_user= $this->session->userdata('id'); ?>
-      <?php $level= $this->session->userdata('level'); ?>
+      <?php $level= $this->session->userdata('level'); ?> 
 
       <div class="user-panel">
         <div class="pull-left image">
@@ -19,11 +19,16 @@
       <ul class="sidebar-menu" data-widget="tree">
 
         <li class="header">MAIN NAVIGATION</li>
+
+        <?php if ($this->session->userdata('jenis_user')=="2")
+        { ?>
         <li>
           <a href="<?php echo base_url()."User"; ?>">
             <i class="fa fa-group"></i><span>Kelola User</span>
           </a>
-        </li>
+        </li> 
+      <?php } ?>
+
          <li>
           <a href="<?php echo base_url()."AbsensiCtrl"; ?>">
             <i class="fa fa-book"></i><span>Absensi</span>
@@ -35,17 +40,23 @@
           </a>
         </li>
 
-        <li>
-          <a href="<?php echo base_url()."InputRekapAbsensi"; ?>">
-            <i class="fa fa-archive"></i><span>Input Rekap Absensi</span>
-          </a>
-        </li>
-
-        <li>
+        <?php 
+        if ($this->session->userdata('jenis_user')=="2")
+        { ?> 
+          <li>
+            <a href="<?php echo base_url()."InputRekapAbsensi"; ?>">
+              <i class="fa fa-archive"></i><span>Input Rekap Absensi</span>
+            </a>
+          </li>  
+        
+          <li>
           <a href="<?php echo base_url()."PenilaianDosen"; ?>">
             <i class="fa fa-area-chart"></i><span>Penilaian Dosen</span>
           </a>
         </li>
+        <?php } ?>
+
+        
          <li>
           <a href="<?php echo base_url()."User/detail/".$this->session->userdata('id'); ?>">
             <i class="fa fa-user"></i><span>Profile</span>

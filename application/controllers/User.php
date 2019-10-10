@@ -141,11 +141,91 @@ class User extends CI_Controller {
         redirect("User"); // Redirect ke halaman awal (ke controller siswa fungsi index)  
     }
 
-    public function detail($kd_user=null)
+    public function detail($id_user=null)
     {
-        echo "module sedand di buat";
-        # code...
+        $data = array();
+        if ($this->session->userdata('id')!=$id_user) {
+            $this->session->set_flashdata('pesan',"Anda tidak boleh mengakses data User lain"); 
+        }
+        else
+        {
+            $where = array(
+                'id_user' => $id_user, 
+            );
+           $hasil = $this->M_user->detail($where);
+           if ($hasil->num_rows()>0)
+           {
+                $data = $hasil->row_array();
+           }
+           else
+           {
+            $this->session->set_flashdata('pesan',"Proses hapus user berasil");
+           } 
+        }
+
+        $data['title'] = "Detail User";
+        $this->load->view("include/header",$data);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("user/detail" ,$data);
+        $this->load->view("include/footer"); 
     }
+
+    public function hapus($id_user)
+    {
+        $where = array(
+            'id_user' => $id_user, 
+        );
+       $hasil = $this->M_user->hapus($where);
+       if ($hasil==true)
+       {
+            $this->session->set_flashdata('pesan',"Proses hapus user berasil");
+       }
+       else
+       {
+        $this->session->set_flashdata('pesan',"Proses hapus user gagal, silahkan coba kebali ");
+       }
+        redirect("User"); // Redirect ke halaman awal (ke controller siswa fungsi index)  
+    }
+
+    public function do_update()
+    {
+        $data = array(
+            'nik' =>$this->input->post('nik'), 
+            'first_name' =>$this->input->post('first_name'), 
+            'last_name' =>$this->input->post('last_name'), 
+            'alias' =>$this->input->post('alias'), 
+            'gender' =>$this->input->post('gender'), 
+            'jenis_user' =>$this->input->post('jenis_user'), 
+            'username' =>$this->input->post('username'),  
+        );
+
+        if ($this->input->post('password'))
+        {
+           $data['password'] = md5($this->input->post('password'));
+        }
+
+        $id_user = $this->input->post('id_user');
+
+        $where = array('id_user' => $id_user );
+
+        $hasil = $this->M_user->update($where,$data);
+       if ($hasil==true)
+       {
+            $this->session->set_flashdata('pesan',"Proses update user berasil");
+       }
+       else
+       {
+        $this->session->set_flashdata('pesan',"Proses update user gagal, silahkan coba kebali ");
+       }
+        
+        redirect("User/detail/".$id_user); // Redirect ke halaman awal (ke controller siswa fungsi index)   
+ 
+
+    }
+
+
+
 
    
    

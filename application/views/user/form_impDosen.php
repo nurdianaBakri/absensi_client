@@ -28,8 +28,7 @@
                 <?php echo $this->session->flashdata('pesan'); ?>
             </div>
           <?php }
-          ?>
-
+          ?> 
 
           <div class="box">
             <div class="box-header">
@@ -43,8 +42,8 @@
             <div class="box-body">
 
             	<div class="alert alert-info" role="alert">
-				  Silahkan ambil data user (pegawai PSTI) dari sistem absensi fingerprint, kemudian import data tersebut ke sini.
-				</div>
+    				  Silahkan ambil data user (pegawai PSTI) dari sistem absensi fingerprint, kemudian import data tersebut ke sini.
+    				</div>
               
               <form action="<?php echo base_url()."User/cek_file" ?>" method="POST" enctype="multipart/form-data" >
 

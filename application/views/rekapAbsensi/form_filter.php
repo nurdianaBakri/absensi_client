@@ -44,7 +44,7 @@
       				  Silahkan masukkan tanggal awal dan dan tanggal alhir untuk memfilter data rekapan absensi.
       				</div>
               
-              <form action="<?php echo base_url()."User/doImport" ?>" method="POST" >
+              <form action="<?php echo base_url()."RekapAbsensi/export" ?>" method="POST" >
 
               	<div class="form-group row">
       				    <label for="awal" class="col-sm-2 col-form-label">Tanggal Awal </label>

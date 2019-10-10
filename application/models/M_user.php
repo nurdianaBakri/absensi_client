@@ -49,6 +49,15 @@ class M_user extends CI_Model
 		$this->db->insert_batch($tabel, $data);
 	}
 
+	public function hapus($where)
+	{
+		$data = array(
+			'deleted' => 1, 
+		);
+		$this->db->where($where); 
+		return $this->db->update('user',$data);
+	}
+
  
 }
 ?>

@@ -14,8 +14,15 @@ class Login extends CI_Controller {
 		header('Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT');
 		//header("Content-type:application/json");
     }
+
+    public function index()
+	{
+        $day_date=date('Y-m-d'); 
+		$getallData['data']= $this->M_absensi->getAll($day_date);
+		$this->load->view('mhs/view_absen',$getallData);
+	}
  
-	public function index()
+	public function login()
 	{
 		$this->load->view('login/login');
 	}
@@ -56,6 +63,13 @@ class Login extends CI_Controller {
 		$this->session->unset_userdata('logged_in');
 
 		redirect('Login/index');
+	}
+
+	public function getAbsensi()
+	{
+		$day_date=date('Y-m-d'); 
+		$getallData['data']= $this->M_absensi->getAll($day_date);
+		$this->load->view('mhs/get_absensi',$getallData);
 	}
 
 }

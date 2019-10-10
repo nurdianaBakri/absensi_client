@@ -34,7 +34,11 @@
             <div class="box-header">
               
               <h3 class="box-title">
-              	<?php echo $title; ?>
+              	<?php 
+
+                var_dump($data);
+
+                echo $title; ?>
               </h3>
 
             </div>
@@ -62,7 +66,7 @@
                   <div class="col-sm-3">
                     <select class="form-control" name="status">
                       <?php foreach ($mode as $key ): ?>
-                        <option value="<?= $key['io_mode']; ?>"><?= $key['io_name'] ?></option>
+                        <option value="<?= $key['io_mode']; ?>" <?php if($key['io_mode']==$io_mode){ echo "selected";} ?>><?= $key['io_name'] ?></option>
                       <?php endforeach ?> 
                     </select>
                   </div>      				   

@@ -24,6 +24,22 @@ class RekapAbsensi extends CI_Controller {
         $this->load->view("include/footer");
     }
 
+    public function export()
+    {
+        $awal = $this->input->post('awal');
+        $akhir = $this->input->post('akhir');
+
+        $data['data'] = $this->M_absensi->export($awal, $akhir);  
+        $data['title'] = "Export";
+
+        $this->load->view("include/header",$data);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("rekapAbsensi/export" ,$data);
+        $this->load->view("include/footer");
+    }
+
+
    
    
 }

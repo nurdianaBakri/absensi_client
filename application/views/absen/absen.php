@@ -28,9 +28,9 @@
           <div class="box">
             <div class="box-header">
               
-              <h3 class="box-title">
+              <!-- <h3 class="box-title">
                 <a target="_blank" href="<?php echo base_url()."AbsensiCtrl/dataAwal"; ?>" class="btn btn-success"><i class="fa fa-download"></i> Input Absen</a>
-              </h3>
+              </h3> -->
 
             </div>
             <!-- /.box-header -->
@@ -46,14 +46,16 @@
                     <th>No.</th>
                     <th>NIP</th>
                     <th>Nama</th>
-                    <th>Status Absensi</th>
+                    <th>Waktu</th>
+                    <th>Status</th> 
+                     <?php if ($this->session->userdata('jenis_user')=="1"): ?>
+                      <th>Aksi</th>  
+                    <?php endif ?>
                   </tr>
                   </thead>
                   <tbody>
-                   <?php
-                   $no=1;
-                   if (sizeof($data)>0) 
-                   {
+                   <?php  
+                   $no=1; 
                      foreach ($data as $key ) 
                       { 
                         ?>
@@ -67,21 +69,32 @@
                               //PRINT NAMA SESUAI DENGAN NIK
                               $this->db->where('nik', $key['nik']);
                               $user = $this->db->get('user')->row_array();
-                              echo $user['first_name']." ".$user['last_name'];?></td>
-                            <td>
-                                <a href="<?php echo base_url()."AbsensiCtrl/detail/".$key['id_absen']?>" class="btn btn-success"><i class="fa fa-list"></i> Detail</a>
+                              echo $user['first_name']." ".$user['last_name'];?>
                             </td>
+                            <td><?php echo "  ".$key['waktu']; ?></td>
+                            <td><?php echo "  ".$key['io_name']; ?></td>
+
+                            <?php if ($this->session->userdata('jenis_user')=="1"): ?>
+                                <td>
+                                  <a target="_blank" href="<?php echo base_url()."AbsensiCtrl/formtambah/".$key['nik']; ?>" class="btn btn-success"><i class="fa fa-download"></i> Input Absen</a>
+                                </td>
+                            <?php endif ?>
+                            
                           </tr>
                       <?php 
-                     }
-                  }  ?>
+                     }  ?>
                   </tbody>
                 <tfoot>
                 <tr>
                     <th>No.</th>
                     <th>NIP</th>
                     <th>nama</th>
-                    <th>Status Absensi</th>
+                    <th>Waktu</th> 
+                    <th>Status</th>  
+                    <?php if ($this->session->userdata('jenis_user')=="1"): ?>
+                      <th>Aksi</th>  
+                    <?php endif ?>
+
                 </tr>
                 </tfoot>
               </table>
@@ -91,6 +104,7 @@
       </div>
     </section>
   </div>
+ 
 
   <script>
     $(function () {

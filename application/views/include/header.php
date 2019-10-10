@@ -37,8 +37,7 @@
 
 
 <script src="<?php echo base_url()."assets"; ?>/bower_components/select2/dist/js/select2.full.min.js"></script>
-
-
+ 
 <!-- DataTables -->
 <script src="<?php echo base_url()."assets"; ?>/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url()."assets"; ?>/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -157,3 +156,4 @@
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
+ 
