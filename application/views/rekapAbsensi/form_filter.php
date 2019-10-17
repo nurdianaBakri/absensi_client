@@ -49,12 +49,12 @@
               	<div class="form-group row">
       				    <label for="awal" class="col-sm-2 col-form-label">Tanggal Awal </label>
       				    <div class="col-sm-3">
-      				      <input type="date" class="form-control" id="awal" name="awal">
+      				      <input type="date" required class="form-control" id="awal" name="awal">
       				    </div>
 
       				    <label for="akhir" class="col-sm-2 col-form-label">Tanggal Akhir </label>
       				    <div class="col-sm-3">
-      				      <input type="date" class="form-control" id="akhir" name="akhir">
+      				      <input type="date" required class="form-control" id="akhir" name="akhir">
       				    </div>
       				    <div class="col-sm-2">
       				      <input type="submit" name="Filter" class="btn btn-success btn-block">

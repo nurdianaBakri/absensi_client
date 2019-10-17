@@ -141,27 +141,53 @@ class User extends CI_Controller {
         redirect("User"); // Redirect ke halaman awal (ke controller siswa fungsi index)  
     }
 
-    public function detail($id_user=null)
+    public function profile($id_user)
     {
         $data = array();
         if ($this->session->userdata('id')!=$id_user) {
-            $this->session->set_flashdata('pesan',"Anda tidak boleh mengakses data User lain"); 
+            $this->session->set_flashdata('pesan',"Anda tidak boleh mengakses data User lain");  
         }
         else
         {
             $where = array(
                 'id_user' => $id_user, 
-            );
+            ); 
+
            $hasil = $this->M_user->detail($where);
            if ($hasil->num_rows()>0)
            {
-                $data = $hasil->row_array();
+                $data['data'] = $hasil->row_array();
            }
            else
            {
-            $this->session->set_flashdata('pesan',"Proses hapus user berasil");
+            $this->session->set_flashdata('pesan',"User tidak di temukan");
            } 
         }
+
+        $data['title'] = "Profile";
+        $this->load->view("include/header",$data);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("user/detail" ,$data);
+        $this->load->view("include/footer"); 
+    }
+
+    public function detail($id_user=null)
+    {
+        $data = array();
+        $where = array(
+            'id_user' => $id_user, 
+        ); 
+
+       $hasil = $this->M_user->detail($where);
+       if ($hasil->num_rows()>0)
+       {
+            $data['data'] = $hasil->row_array();
+       }
+       else
+       {
+        $this->session->set_flashdata('pesan',"User tidak di temukan");
+       }  
 
         $data['title'] = "Detail User";
         $this->load->view("include/header",$data);

@@ -12,8 +12,8 @@ class AbsensiCtrl extends CI_Controller {
             redirect("Login/index");
         }
 
-        $this->API="http://nusapintar.com/kehadiran/index.php/absen/psti";
-        $this->load->library('curl');  
+        // $this->API="http://nusapintar.com/kehadiran/index.php/absen/psti";
+        // $this->load->library('curl');  
     }
 
     function index()
@@ -28,30 +28,7 @@ class AbsensiCtrl extends CI_Controller {
         $this->load->view("include/leftmenu" );
         $this->load->view("absen/absen" ,$getallData);
         $this->load->view("include/footer");
-    }
-
-    // function generate()
-    // {
-    //    $ket_io_mode="";
-    //     $balikan = array();
-    //     $data = json_decode($this->curl->simple_get($this->API))->data;
-    //     $updateTerakhir = json_decode($this->curl->simple_get($this->API))->updateTerakhir;
-    //     foreach ($data as $key)
-    //     {
-    //         $balikan= array(
-    //             'nama' => $key->first_name.$key->last_name, 
-    //             'scan_time_awal' => $key->scan_time_awal, 
-    //             'scan_time_akhir' => $key->scan_time_akhir, 
-    //             'nik' => $key->nik, 
-    //             'read' => 0, 
-    //             'nim' => "0", 
-    //             'io_mode' => $key->io_mode, 
-    //             'tanggal_scan' => $key->tanggal_scan,
-    //         );
-    //         $this->db->insert('notif_absen',$balikan);
-    //     }
-    //     var_dump($balikan);
-    // }
+    } 
 
     public function doTambah()
     {

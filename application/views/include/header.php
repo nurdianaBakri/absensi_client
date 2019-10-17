@@ -51,40 +51,6 @@
 <script src="<?php echo base_url()."assets"; ?>/dist/js/demo.js"></script>
 <!-- page script -->
 
-
-<script type="text/javascript">
-    setInterval(function(){
-
-      //alert("Hello"); 
-      var id_user = "<?php echo $this->session->userdata('id'); ?>";
-      var url = "<?php echo base_url()."index.php/web/Chat/countChat_and_groupchat/" ?>"+id_user;
-      $.ajax({
-          type:"post",
-          url: url,
-          cache: false,
-          dataType: "json",
-          complete: function(respons) {
-            var unred_pesan=0;
-            var unred_group=0;
-            var total=0;
-            var disposisi=0;
-              $.each(respons,function(key, val){
-                unred_pesan=val.n_unreadPesan;
-                unred_group=val.n_ureadGroup;
-                total=val.n_unreadTtotal;
-                disposisi=val.n_unreadDisposisi;
-
-                $("#pesan").html(unred_pesan);
-                $("#group").html(unred_group);
-                $("#total").html(total);
-                $("#disposisi").html(disposisi);
-              });
-          }
-      });           
-   }, 4000);
-</script>
-
-
 <!-- Page script -->
 <script>
   $(function () {

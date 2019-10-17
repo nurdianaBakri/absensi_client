@@ -35,9 +35,6 @@
               
               <h3 class="box-title">
               	<?php 
-
-                var_dump($data);
-
                 echo $title; ?>
               </h3>
 

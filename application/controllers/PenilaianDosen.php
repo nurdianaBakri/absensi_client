@@ -34,6 +34,72 @@ class PenilaianDosen extends CI_Controller {
         $this->load->view("include/footer");
     }
 
+    function nilai($nik)
+    {
+        $getallData['title'] = "Form Penilaian Dosen ".$nik;
+        $where = array('nik' => $nik, );
+
+        $data= $this->M_user->detail($where);
+        if ($data->num_rows()>0) 
+        {
+            $getallData['data']=$data->row_array();
+        }
+        else
+        {
+            $getallData['data'] = array();
+        }
+
+        $this->load->view("include/header",$getallData);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("penilaian/form_nilai" ,$getallData);
+        $this->load->view("include/footer");
+    }
+
+    function detail($nik)
+    {
+        $getallData['title'] = "Form Penilaian Dosen ".$nik;
+        $where = array('nik' => $nik, );
+
+        $data= $this->M_user->detail($where);
+        if ($data->num_rows()>0) 
+        {
+            $getallData['data']=$data->row_array();
+        }
+        else
+        {
+            $getallData['data'] = array();
+        }
+
+        $this->load->view("include/header",$getallData);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("penilaian/form_nilai" ,$getallData);
+        $this->load->view("include/footer");
+    }
+
+    public function do_nilai()
+    {
+        $nik =$this->input->post('nik');
+        $keterangan =$this->input->post('keterangan');
+
+        $data = array(
+            'nik' => $nik, 
+            'keterangan' => $keterangan, 
+        );
+
+        $cek  = $this->M_Penilaian->insert($data);
+        if ($cek==true)
+        {
+            $this->session->set_flashdata('pesan',"Proses input nilai berhasil ");
+        }
+        else
+        {
+            $this->session->set_flashdata('pesan',"Proses input nilai gagal ");
+        }
+        redirect('PenilaianDosen/nilai/'.$nik);
+    }
+
    
    
 }

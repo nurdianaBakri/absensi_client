@@ -30,7 +30,7 @@ class RekapAbsensi extends CI_Controller {
         $akhir = $this->input->post('akhir');
 
         $data['data'] = $this->M_absensi->export($awal, $akhir);  
-        $data['title'] = "Export";
+        $data['title'] = "Rekap absensi ".$awal." sampai dengan ".$akhir;
 
         $this->load->view("include/header",$data);
         $this->load->view("include/topmenu");

@@ -28,10 +28,7 @@
           <div class="box">
             <div class="box-header">
               
-              <!-- <h3 class="box-title">
-                <a target="_blank" href="<?php echo base_url()."AbsensiCtrl/dataAwal"; ?>" class="btn btn-success"><i class="fa fa-download"></i> Input Absen</a>
-              </h3> -->
-
+              
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -72,7 +69,7 @@
                               echo $user['first_name']." ".$user['last_name'];?>
                             </td>
                             <td><?php echo "  ".$key['waktu']; ?></td>
-                            <td><?php echo "  ".$key['io_name']; ?></td>
+                            <td><?php echo $key['io_icon']."  ".$key['io_name']; ?></td>
 
                             <?php if ($this->session->userdata('jenis_user')=="1"): ?>
                                 <td>

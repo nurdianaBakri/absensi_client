@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 10, 2019 at 12:54 PM
+-- Generation Time: Oct 17, 2019 at 08:17 PM
 -- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.6
+-- PHP Version: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -48,7 +48,15 @@ INSERT INTO `absensi` (`id_absen`, `nik`, `io_mode`, `tanggal_scan`) VALUES
 (6, '199012182012121002', 2, '2019-10-10 04:03:00'),
 (7, '197311302000031001', 1, '2019-10-10 08:00:00'),
 (8, '197210191999032001', 1, '2019-10-10 08:01:00'),
-(9, '199012182012121002', 1, '2019-10-10 08:03:00');
+(9, '199012182012121002', 1, '2019-10-10 08:03:00'),
+(10, '197311302000031001', 1, '2019-10-10 15:18:08'),
+(11, '197311302000031001', 3, '2019-10-10 15:35:20'),
+(12, '197210191999032001', 4, '2019-10-10 15:50:08'),
+(13, '197210191999032001', 5, '2019-10-10 15:51:00'),
+(14, '197210191999032001', 2, '2019-10-10 15:51:51'),
+(15, '197311302000031001', 2, '2019-10-10 15:53:35'),
+(16, '199012182012121002', 3, '2019-10-10 16:05:28'),
+(17, '198312092012121001', 1, '2019-10-16 20:24:09');
 
 -- --------------------------------------------------------
 
@@ -58,21 +66,22 @@ INSERT INTO `absensi` (`id_absen`, `nik`, `io_mode`, `tanggal_scan`) VALUES
 
 CREATE TABLE `mode` (
   `io_mode` tinyint(4) NOT NULL,
-  `io_name` varchar(30) NOT NULL DEFAULT ''
+  `io_name` varchar(30) NOT NULL DEFAULT '',
+  `icon` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `mode`
 --
 
-INSERT INTO `mode` (`io_mode`, `io_name`) VALUES
-(0, 'Scan Masuk'),
-(1, 'Scan Keluar'),
-(2, 'Keluar Istirahat'),
-(3, 'Kembali Istirahat'),
-(4, 'Masuk Lembur'),
-(5, 'Keluar Lembur'),
-(6, 'Invalid');
+INSERT INTO `mode` (`io_mode`, `io_name`, `icon`) VALUES
+(0, 'Scan Masuk', '<i class=\"fa fa-level-down\" style=\"font-size:20px;color:blue\"></i>'),
+(1, 'Scan Keluar', '<i class=\"fa fa-info-circle\" style=\"font-size:20px;color:red\"></i>'),
+(2, 'Keluar Istirahat', '<i class=\"fa fa-exchange\" style=\"font-size:20px;color:blue\"></i>'),
+(3, 'Kembali Istirahat', '<i class=\"fa fa-exchange\" style=\"font-size:20px;color:green\"></i>'),
+(4, 'Masuk Lembur', '<i class=\"fa fa-bullseye\" style=\"font-size:20px;color:green\"></i>'),
+(5, 'Keluar Lembur', '<i class=\"fa fa-bullseye\" style=\"font-size:20px;color:green\"></i>'),
+(6, 'Invalid', '<i class=\"fa fa-crosshairs\" style=\"font-size:20px;color:red\"></i>');
 
 -- --------------------------------------------------------
 
@@ -84,8 +93,16 @@ CREATE TABLE `nilai` (
   `id` int(11) NOT NULL,
   `nik` varchar(20) NOT NULL,
   `date_input` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `nilai` int(11) NOT NULL
+  `nilai` int(11) NOT NULL,
+  `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `nilai`
+--
+
+INSERT INTO `nilai` (`id`, `nik`, `date_input`, `nilai`, `keterangan`) VALUES
+(1, '197210191999032001', '2019-10-17 18:08:26', 0, 'fkslfk\r\n');
 
 -- --------------------------------------------------------
 
@@ -171,13 +188,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `nilai`
 --
 ALTER TABLE `nilai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

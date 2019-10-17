@@ -14,6 +14,11 @@ class M_Penilaian extends CI_Model
 		$this->db->where($where);
 		return $this->db->update('nilai', $data);
 	}
+
+	public function insert($data)
+	{
+		return $this->db->insert('nilai',$data);
+	}
  
 }
 ?>

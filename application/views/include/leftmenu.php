@@ -58,7 +58,7 @@
 
         
          <li>
-          <a href="<?php echo base_url()."User/detail/".$this->session->userdata('id'); ?>">
+          <a href="<?php echo base_url()."User/profile/".$this->session->userdata('id'); ?>">
             <i class="fa fa-user"></i><span>Profile</span>
           </a>
         </li>

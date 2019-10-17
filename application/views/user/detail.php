@@ -41,30 +41,30 @@
             <!-- /.box-header -->
             <div class="box-body"> 
              
-              <form action="<?php echo base_url()."User/do_update" ?>" method="POST" enctype="multipart/form-data" >
+              <form action="<?php echo base_url()."User/do_update" ?>" method="POST" enctype="multipart/form-data" > 
 
               	<div class="form-group row">
 
-                    <input type="hidden"  id="id_user" value="<?= $id_user ?>" name="id_user">
+                    <input type="hidden"  id="id_user" value="<?= $data['id_user'] ?>" name="id_user">
 
       				    <label for="nik" class="col-sm-2  col-form-label">NIK </label>
       				    <div class="col-sm-4">
-      				      <input type="text" class="form-control" id="nik" value="<?= $nik ?>" name="nik">
+      				      <input type="text" class="form-control" id="nik" value="<?= $data['nik'] ?>" name="nik">
       				    </div>
       				    <label for="first_name" class="col-sm-2  col-form-label">Nama Depan </label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" id="first_name" value="<?= $first_name ?>" name="first_name">
+                    <input type="text" class="form-control" id="first_name" value="<?= $data['first_name'] ?>" name="first_name">
                   </div>
       				  </div>	
 
                 <div class="form-group row">
                   <label for="last_name" class="col-sm-2">Last Name </label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" id="last_name" value="<?= $last_name ?>" name="last_name">
+                    <input type="text" class="form-control" id="last_name" value="<?= $data['last_name'] ?>" name="last_name">
                   </div>
                   <label for="alias" class="col-sm-2">Alias </label>
                   <div class="col-sm-4">
-                    <input type="text" class="form-control" id="alias" value="<?= $alias ?>" name="alias">
+                    <input type="text" class="form-control" id="alias" value="<?= $data['alias'] ?>" name="alias">
                   </div>
                 </div>  
 
@@ -72,16 +72,16 @@
                   <label for="gender" class="col-sm-2">Gender </label>
                   <div class="col-sm-4">
                     <select  name="gender" class="form-control"  >
-                      <option value="1" <?php if($gender=="1"){ echo "selected";} ?>> Wanita</option>
-                      <option value="0" <?php if($gender=="0"){ echo "selected";} ?>> Laki - Laki</option>
+                      <option value="1" <?php if($data['gender']=="1"){ echo "selected";} ?>> Wanita</option>
+                      <option value="0" <?php if($data['gender']=="0"){ echo "selected";} ?>> Laki - Laki</option>
                     </select>
                   </div>
                   <label for="jenis_user" class="col-sm-2">Jenis user </label>
                   <div class="col-sm-4">
                     <select   class="form-control" name="jenis_user">
-                      <option value="2" <?php if($jenis_user=="2"){ echo "selected";} ?>> Kepala Prodi</option>
-                      <option value="3" <?php if($jenis_user=="3"){ echo "selected";} ?>> Dosen</option>
-                      <option value="1" <?php if($jenis_user=="1"){ echo "selected";} ?>> Admin</option>
+                      <option value="2" <?php if($data['jenis_user']=="2"){ echo "selected";} ?>> Kepala Prodi</option>
+                      <option value="3" <?php if($data['jenis_user']=="3"){ echo "selected";} ?>> Dosen</option>
+                      <option value="1" <?php if($data['jenis_user']=="1"){ echo "selected";} ?>> Admin</option>
                     </select>
                   </div>
                 </div>  		
@@ -89,7 +89,7 @@
                  <div class="form-group row">
                   <label for="username" class="col-sm-2">Username </label>
                   <div class="col-sm-4">
-                     <input type="text" class="form-control" id="username" value="<?= $username ?>" name="username">
+                     <input type="text" class="form-control" id="username" value="<?= $data['username'] ?>" name="username">
                   </div> 
 
                    <label for="password" class="col-sm-2">Password (Kosongkan jika tidak ingin merubah password) </label>

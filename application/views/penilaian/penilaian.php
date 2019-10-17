@@ -29,11 +29,7 @@
           <?php }
           ?>
           <div class="box">
-            <div class="box-header">
-              
-              
-
-            </div>
+            <div class="box-header">  </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-bordered table-striped">
@@ -63,7 +59,7 @@
                               echo $user['first_name']." ".$user['last_name'];?></td>
 
                           <td>
-                              <a href="#" class="btn btn-success"> Nilai</a>
+                              <a href="<?= base_url()."PenilaianDosen/nilai/".$key['nik'] ?>" class="btn btn-success"> Nilai</a>
                           </td>
                         </tr>
                     <?php }  ?>

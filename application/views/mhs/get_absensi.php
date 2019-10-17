@@ -23,7 +23,7 @@
                               echo $user['first_name']." ".$user['last_name'];?>
                             </td>
                             <td><?php echo $key['waktu']; ?></td>
-                            <td><?php echo $key['io_name']; ?></td>
+                            <td><?php echo $key['io_icon']." ".$key['io_name']; ?></td>
                           </tr>
                       <?php 
                      }  ?>
