@@ -216,8 +216,9 @@ class User extends CI_Controller {
 
     public function do_update()
     {
+        $nik =$this->input->post('nik');
         $data = array(
-            'nik' =>$this->input->post('nik'), 
+            'nik' =>$nik, 
             'first_name' =>$this->input->post('first_name'), 
             'last_name' =>$this->input->post('last_name'), 
             'alias' =>$this->input->post('alias'), 
@@ -231,9 +232,28 @@ class User extends CI_Controller {
            $data['password'] = md5($this->input->post('password'));
         }
 
-        $id_user = $this->input->post('id_user');
+        // var_dump($_FILES["foto"]["error"]);
 
+        if($_FILES["foto"]["error"] == 4) {
+        //means there is no file uploaded
+        }
+        else
+        {
+            $upload = $this->doConfig($nik);
+            if ($upload['berhasil']==TRUE)
+            {
+                $data['foto'] = $nik.".png";
+            }
+            else
+            {
+                $this->session->set_flashdata('pesan',"Proses update foto user gagal, silahkan coba kebali ");
+            }
+        }
+      
+        $id_user = $this->input->post('id_user');
         $where = array('id_user' => $id_user );
+
+        // var_dump($data);
 
         $hasil = $this->M_user->update($where,$data);
        if ($hasil==true)
@@ -246,8 +266,36 @@ class User extends CI_Controller {
        }
         
         redirect("User/detail/".$id_user); // Redirect ke halaman awal (ke controller siswa fungsi index)   
- 
+    }
 
+    public function doConfig($file_name)
+    {
+        $data = array();
+        $config['upload_path']        = 'assets/user/';
+        $config['file_name']          = $file_name.".png";
+        $config['allowed_types']      = 'jpg|png|jpeg';
+        $config['overwrite'] = TRUE;
+
+        $path = $_FILES['foto']['name'];
+        $ext = pathinfo($path, PATHINFO_EXTENSION);
+
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('foto'))
+        {
+            $data = array(
+                'berhasil' =>FALSE ,
+                'error' => $this->upload->display_errors(),
+            );
+        }
+        else
+        {
+            $upload = $this->upload->data();
+            $data = array(
+                'berhasil' =>TRUE ,
+                'error' => $upload,
+            );
+        }
+        return $data;
     }
 
 

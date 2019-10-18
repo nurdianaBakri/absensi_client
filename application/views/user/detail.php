@@ -30,7 +30,7 @@
           <?php }
           ?> 
 
-          <div class="box">
+          <div class="box box-success">
             <div class="box-header">
               
               <h3 class="box-title">
@@ -51,7 +51,7 @@
                          $img =base_url()."assets/user/".$data['foto'];
                       }
                     ?>
-                    <img src="<?= $img; ?>" style="border:3px solid green">
+                    <img src="<?= $img; ?>" style="border:3px solid green" width="250px" height="auto">
                   </center>
                   <br>
 
@@ -107,6 +107,13 @@
                    <label for="password" class="col-sm-2">Password (Kosongkan jika tidak ingin merubah password) </label>
                   <div class="col-sm-4">
                      <input type="text" class="form-control" id="password" name="password">
+                  </div>
+                </div> 
+
+                <div class="form-group row">
+                   <label for="foto" class="col-sm-2">Foto (Kosongkan jika tidak ingin merubah foto) </label>
+                  <div class="col-sm-4">
+                     <input type="file" class="form-control" id="foto" name="foto">
                   </div>
                 </div>   
 
