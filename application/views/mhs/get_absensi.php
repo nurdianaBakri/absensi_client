@@ -16,7 +16,19 @@
                         ?>
                           <tr>
                             <td><?php echo $no++; ?></td>
-                            <td><?php echo $key['nik']; ?></td>
+                            <td>
+                            <center>
+                                <?php 
+                                  $img =base_url()."assets/user/icon_user.png";
+                                  if ($key['foto']!=null)
+                                  {
+                                     $img =base_url()."assets/user/".$key['foto'];
+                                  }
+                                ?>
+                                <img src="<?= $img; ?>" style="border:3px solid green" width="100px" height="auto"> <br>
+                                <?php echo $key['nik']; ?></td>
+                              </center> 
+                            </td>
                             <td><?php 
                               $this->db->where('nik', $key['nik']);
                               $user = $this->db->get('user')->row_array();

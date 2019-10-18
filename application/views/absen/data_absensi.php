@@ -13,23 +13,32 @@
                   </thead>
                   <tbody>
                    <?php  
-                   $no=1; 
+                   $no=1;  
                      foreach ($data as $key ) 
                       { 
                         ?>
                           <tr>
-                            <td><?php echo "  ".$no++; ?></td>
-                            <td><?php echo "  ".$key['nik']; ?></td>
-                            <td><?php
-
-                            // var_dump($key['nik']);
-
+                            <td><?php echo $no++; ?></td>
+                            <td>
+                              <center>
+                                <?php 
+                                  $img =base_url()."assets/user/icon_user.png";
+                                  if ($key['foto']!=null)
+                                  {
+                                     $img =base_url()."assets/user/".$key['foto'];
+                                  }
+                                ?>
+                                <img src="<?= $img; ?>" style="border:3px solid green" width="100px" height="auto"> <br>
+                                <?php echo $key['nik']; ?></td>
+                              </center> 
+                            <td>
+                              <?php
                               //PRINT NAMA SESUAI DENGAN NIK
                               $this->db->where('nik', $key['nik']);
                               $user = $this->db->get('user')->row_array();
                               echo $user['first_name']." ".$user['last_name'];?>
                             </td>
-                            <td><?php echo "  ".$key['waktu']; ?></td>
+                            <td><?php echo $key['waktu']; ?></td>
                             <td><?php echo $key['io_icon']."  ".$key['io_name']; ?></td>
 
                             <?php if ($this->session->userdata('jenis_user')=="1"): ?>

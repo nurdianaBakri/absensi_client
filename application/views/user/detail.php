@@ -43,9 +43,21 @@
              
               <form action="<?php echo base_url()."User/do_update" ?>" method="POST" enctype="multipart/form-data" > 
 
+                  <center>
+                    <?php 
+                      $img =base_url()."assets/user/icon_user.png";
+                      if ($data['foto']!=null)
+                      {
+                         $img =base_url()."assets/user/".$data['foto'];
+                      }
+                    ?>
+                    <img src="<?= $img; ?>" style="border:3px solid green">
+                  </center>
+                  <br>
+
               	<div class="form-group row">
 
-                    <input type="hidden"  id="id_user" value="<?= $data['id_user'] ?>" name="id_user">
+                  <input type="hidden"  id="id_user" value="<?= $data['id_user'] ?>" name="id_user">
 
       				    <label for="nik" class="col-sm-2  col-form-label">NIK </label>
       				    <div class="col-sm-4">

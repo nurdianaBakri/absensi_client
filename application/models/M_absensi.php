@@ -41,7 +41,8 @@ class M_absensi extends CI_Model {
     		$data['nik'] =$key['nik'];
     		$data['io_mode'] =$hasil['io_mode']; 
             $data['io_icon'] =$icon; 
-    		$data['io_name'] =$io_name; 
+            $data['io_name'] =$io_name; 
+    		$data['foto'] =$key['foto']; 
             $data['id_absen'] =$hasil['id_absen']; 
     		$data['waktu'] = substr($hasil['tanggal_scan'], 12); 
     		$data2[]=$data;
