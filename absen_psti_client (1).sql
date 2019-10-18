@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2019 at 08:17 PM
+-- Generation Time: Oct 18, 2019 at 06:44 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -120,37 +120,38 @@ CREATE TABLE `user` (
   `jenis_user` int(1) NOT NULL COMMENT '1= admin, 2=kaprodi, 3=dosen',
   `username` varchar(100) NOT NULL,
   `password` varchar(225) NOT NULL,
-  `deleted` tinyint(1) NOT NULL
+  `deleted` tinyint(1) NOT NULL,
+  `foto` varchar(200) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nik`, `first_name`, `last_name`, `gender`, `alias`, `jenis_user`, `username`, `password`, `deleted`) VALUES
-(3, '197311302000031001', 'Prof. I', 'Gede Pasek Suta Wijaya,  ST.,MT.,D.Eng.', 0, 'I Gede Pasek Suta Wijaya', 3, 'pasek', '21232f297a57a5a743894a0e4a801fc3', 0),
-(4, '197210191999032001', 'Dr.Eng. Budi', 'Irmawati, S.Kom.,MT.', 1, 'Budi Irmawati, S.Kom.,MT', 2, 'budi', '21232f297a57a5a743894a0e4a801fc3', 0),
-(5, '199012182012121002', 'Ario', 'Yudo Husodo, ST.,MT.', 0, 'Ario Yudo Husodo, ST.,MT', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(6, '198312092012121001', 'Andy', 'Hidayat Jatmika,ST.,M.Kom.', 0, 'Andy Hidayat Jatmika,ST.', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(7, '198507072014042001', 'Royana', 'Afwani, ST.,MT.', 1, 'Royana Afwani, ST.,MT.', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(8, '198608132018032001', 'Nadiyasari', 'Agitha, S.Kom., M.MT.', 1, 'Nadiyasari Agitha, S.Kom', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(9, '198609132015041001', 'Ariyan', 'Zubaidi, S.Kom.,MT.', 0, 'Ariyan Zubaidi, S.Kom.,M', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(10, '198606222015041002', 'Fitri', 'Bimantoro, ST.,M.Kom.', 0, 'Fitri Bimantoro, ST.,M.K', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(2, '196604032006042001', 'Ir.', 'Sri Endang Anjarwani, M.Kom.', 1, 'Ir. Sri Endang Anjarwani', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(1, '197005141999031002', 'Ida', 'Bagus Ketut Widiartha,  ST.,MT.', 0, 'Ida Bagus Ketut Widiarth', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(11, '198211182015041001', 'I', 'Wayan Agus Arimbawa, ST.,M.Eng.', 0, 'I Wayan Agus Arimbawa, S', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(12, '198311252015041002', 'Moh.', 'Ali Albar, ST.,M.Eng.', 0, 'Moh. Ali Albar, ST.,M.En', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(13, '197902242005011001', 'Azwar', 'Faridi, ST', 0, 'Azwar Faridi., ST', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(15, '1000001', 'Baiq', 'Eny Mariana, SE ', 0, 'Baiq Eny Mariana, SE ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(16, '1000002', 'Ahmad', 'Zafrullah M, ST., M.Eng.', 0, 'Ahmad Zafrullah M. ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(17, '198409192018031001', 'Dr. Eng. IGP Wirarama', ' W W, ST., MT.', 0, 'I Gde Putu Wirarama Weda', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(18, '1000004', 'Rival', ' Biasrori, S.Kom', 0, 'Rival  Biasrori', 1, 'rival', '21232f297a57a5a743894a0e4a801fc3', 0),
-(19, '199402202019031004', 'Arik', 'Aranta, S.Kom., M.Kom', 0, 'Arik Aranta', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(20, '199203232019031012', 'Gibran', 'Satya Nugraha, S.Kom., M.Eng.', 0, 'Gibran Satya Nugraha', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(21, '1000004', 'Ramaditia', 'Dwiyansaputra, S.T., M.Eng.', 0, 'Ramaditia Dwiyansaputra', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0),
-(28, '00001', 'M.', 'Arif', 0, 'boy arista', 1, 'arif', '21232f297a57a5a743894a0e4a801fc3', 0),
-(29, '00002', 'Boy', 'Arista', 0, 'boy arista', 2, 'boy', '21232f297a57a5a743894a0e4a801fc3', 0),
-(30, '00003', 'Anang', 'Nugroho', 0, 'Anang Nugroho', 3, 'anang', '21232f297a57a5a743894a0e4a801fc3', 0);
+INSERT INTO `user` (`id_user`, `nik`, `first_name`, `last_name`, `gender`, `alias`, `jenis_user`, `username`, `password`, `deleted`, `foto`) VALUES
+(3, '197311302000031001', 'Prof. I', 'Gede Pasek Suta Wijaya,  ST.,MT.,D.Eng.', 0, 'I Gede Pasek Suta Wijaya', 3, 'pasek', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(4, '197210191999032001', 'Dr.Eng. Budi', 'Irmawati, S.Kom.,MT.', 1, 'Budi Irmawati, S.Kom.,MT', 2, 'budi', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(5, '199012182012121002', 'Ario', 'Yudo Husodo, ST.,MT.', 0, 'Ario Yudo Husodo, ST.,MT', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(6, '198312092012121001', 'Andy', 'Hidayat Jatmika,ST.,M.Kom.', 0, 'Andy Hidayat Jatmika,ST.', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(7, '198507072014042001', 'Royana', 'Afwani, ST.,MT.', 1, 'Royana Afwani, ST.,MT.', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(8, '198608132018032001', 'Nadiyasari', 'Agitha, S.Kom., M.MT.', 1, 'Nadiyasari Agitha, S.Kom', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(9, '198609132015041001', 'Ariyan', 'Zubaidi, S.Kom.,MT.', 0, 'Ariyan Zubaidi, S.Kom.,M', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(10, '198606222015041002', 'Fitri', 'Bimantoro, ST.,M.Kom.', 0, 'Fitri Bimantoro, ST.,M.K', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(2, '196604032006042001', 'Ir.', 'Sri Endang Anjarwani, M.Kom.', 1, 'Ir. Sri Endang Anjarwani', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(1, '197005141999031002', 'Ida', 'Bagus Ketut Widiartha,  ST.,MT.', 0, 'Ida Bagus Ketut Widiarth', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(11, '198211182015041001', 'I', 'Wayan Agus Arimbawa, ST.,M.Eng.', 0, 'I Wayan Agus Arimbawa, S', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(12, '198311252015041002', 'Moh.', 'Ali Albar, ST.,M.Eng.', 0, 'Moh. Ali Albar, ST.,M.En', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(13, '197902242005011001', 'Azwar', 'Faridi, ST', 0, 'Azwar Faridi., ST', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(15, '1000001', 'Baiq', 'Eny Mariana, SE ', 0, 'Baiq Eny Mariana, SE ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(16, '1000002', 'Ahmad', 'Zafrullah M, ST., M.Eng.', 0, 'Ahmad Zafrullah M. ', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(17, '198409192018031001', 'Dr. Eng. IGP Wirarama', ' W W, ST., MT.', 0, 'I Gde Putu Wirarama Weda', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(18, '1000004', 'Rival', ' Biasrori, S.Kom', 0, 'Rival  Biasrori', 1, 'rival', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(19, '199402202019031004', 'Arik', 'Aranta, S.Kom., M.Kom', 0, 'Arik Aranta', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(20, '199203232019031012', 'Gibran', 'Satya Nugraha, S.Kom., M.Eng.', 0, 'Gibran Satya Nugraha', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(21, '1000004', 'Ramaditia', 'Dwiyansaputra, S.T., M.Eng.', 0, 'Ramaditia Dwiyansaputra', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(28, '00001', 'M.', 'Arif', 0, 'boy arista', 1, 'arif', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(29, '00002', 'Boy', 'Arista', 0, 'boy arista', 2, 'boy', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(30, '00003', 'Anang', 'Nugroho', 0, 'Anang Nugroho', 3, 'anang', '21232f297a57a5a743894a0e4a801fc3', 0, '');
 
 --
 -- Indexes for dumped tables
