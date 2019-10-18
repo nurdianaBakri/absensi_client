@@ -23,12 +23,6 @@
   <!-- jQuery 3 -->
 <script src="<?php echo base_url()."assets"; ?>/bower_components/jquery/dist/jquery.min.js"></script>
 
-  <!-- DataTables -->
-<!-- <link rel="stylesheet" href="<?php echo base_url()."assets"; ?>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css"> -->
-<!-- DataTables -->
-<!-- <script src="<?php echo base_url()."assets"; ?>/bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url()."assets"; ?>/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script> -->
-
 </head>
 <!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
 <body class="hold-transition skin-green layout-top-nav">
@@ -88,23 +82,7 @@
             <div class="result"></div>
 
 
-             <script>
-
-              (function worker() {
-                $.ajax({
-                  url: "<?= base_url()."Login/getAbsensi" ?>", 
-                  success: function(data) {
-                    // console.log(data);
-                    $('.result').html(data);
-                  },
-                  complete: function() {
-                    // Schedule the next request when the current one's complete
-                    setTimeout(worker, 5000);
-                  }
-                });
-              })();
-                 
-              </script> 
+             
           </div> 
         </div>
         <!-- /.box -->
@@ -126,6 +104,25 @@
   </footer>
 </div>
 <!-- ./wrapper --> 
+
+<script>
+
+  (function worker() {
+    $.ajax({
+      url: "<?= base_url()."Login/getAbsensi" ?>", 
+      success: function(data) {
+        // console.log(data);
+        $('.result').html(data);
+      },
+      complete: function() {
+        // Schedule the next request when the current one's complete
+        setTimeout(worker, 50000);
+      }
+    });
+  })();
+     
+  </script> 
+              
 
 <!-- jQuery 3 -->
 <script src="<?php echo base_url()."assets"; ?>/bower_components/jquery/dist/jquery.min.js"></script>

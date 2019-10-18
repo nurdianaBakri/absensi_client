@@ -50,6 +50,13 @@ class AbsensiCtrl extends CI_Controller {
         redirect('AbsensiCtrl');
     }
 
+    public function getAbsensi()
+    {
+        $day_date=date('Y-m-d'); 
+        $getallData['data']= $this->M_absensi->getAll($day_date);
+        $this->load->view('absen/data_absensi',$getallData);
+    }
+
     public function formtambah($nik)
     {
         $getallData['title'] = "Tambah Absen hari ini (".date('d, M Y').")";

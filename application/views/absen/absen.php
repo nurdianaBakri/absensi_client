@@ -37,82 +37,30 @@
                 Informasi Absensi pegawai Program Studi teknik informatika hari ini (<?= date('d, M Y') ?>)
               </div>
 
-              <table id="example1" class="table table-bordered table-striped">
-                  <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>NIP</th>
-                    <th>Nama</th>
-                    <th>Waktu</th>
-                    <th>Status</th> 
-                     <?php if ($this->session->userdata('jenis_user')=="1"): ?>
-                      <th>Aksi</th>  
-                    <?php endif ?>
-                  </tr>
-                  </thead>
-                  <tbody>
-                   <?php  
-                   $no=1; 
-                     foreach ($data as $key ) 
-                      { 
-                        ?>
-                          <tr>
-                            <td><?php echo "  ".$no++; ?></td>
-                            <td><?php echo "  ".$key['nik']; ?></td>
-                            <td><?php
+              <div class="result"></div>
 
-                            // var_dump($key['nik']);
+              
 
-                              //PRINT NAMA SESUAI DENGAN NIK
-                              $this->db->where('nik', $key['nik']);
-                              $user = $this->db->get('user')->row_array();
-                              echo $user['first_name']." ".$user['last_name'];?>
-                            </td>
-                            <td><?php echo "  ".$key['waktu']; ?></td>
-                            <td><?php echo $key['io_icon']."  ".$key['io_name']; ?></td>
-
-                            <?php if ($this->session->userdata('jenis_user')=="1"): ?>
-                                <td>
-                                  <a target="_blank" href="<?php echo base_url()."AbsensiCtrl/formtambah/".$key['nik']; ?>" class="btn btn-success"><i class="fa fa-download"></i> Input Absen</a>
-                                </td>
-                            <?php endif ?>
-                            
-                          </tr>
-                      <?php 
-                     }  ?>
-                  </tbody>
-                <tfoot>
-                <tr>
-                    <th>No.</th>
-                    <th>NIP</th>
-                    <th>nama</th>
-                    <th>Waktu</th> 
-                    <th>Status</th>  
-                    <?php if ($this->session->userdata('jenis_user')=="1"): ?>
-                      <th>Aksi</th>  
-                    <?php endif ?>
-
-                </tr>
-                </tfoot>
-              </table>
             </div>
           </div>
         </div>
       </div>
     </section>
-  </div>
- 
+  </div> 
 
   <script>
-    $(function () {
-      $('#example1').DataTable()
-      $('#example2').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false
-      })
-    })
-  </script>
+  (function worker() {
+    $.ajax({
+      url: "<?= base_url()."AbsensiCtrl/getAbsensi" ?>", 
+      success: function(data) {
+        // console.log(data);
+        $('.result').html(data);
+      },
+      complete: function() {
+        // Schedule the next request when the current one's complete
+        setTimeout(worker, 50000);
+      }
+    });
+  })();
+     
+  </script> 

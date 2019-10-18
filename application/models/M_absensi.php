@@ -16,7 +16,7 @@ class M_absensi extends CI_Model {
     	foreach ($user as $key ) {
     		$nik = $key['nik'];  
 
-            $hasil =$this->db->query("SELECT nik, io_mode, tanggal_scan, id_absen FROM absensi  where id_absen=(SELECT MAX(id_absen) as id_absen FROM absensi  where nik='$nik')")->row_array(); 
+            $hasil =$this->db->query("SELECT nik, io_mode, tanggal_scan, id_absen FROM absensi  where id_absen=(SELECT MAX(id_absen) as id_absen FROM absensi  where nik='$nik') and tanggal_scan like '%$today%'")->row_array(); 
 
     		$io_mode=$hasil['io_mode'];  
             if ($io_mode!=null)
@@ -29,7 +29,7 @@ class M_absensi extends CI_Model {
             else if ($io_mode==null)
             {
                 $io_name="";
-                $icon="<i class='fa fa-ban' style='font-size:20px;color:red'></i>";
+                $icon="<i class='fa fa-ban' style='font-size:20px;color:red'></i> Belum absen";
             }
             else
             {
