@@ -53,12 +53,14 @@ class M_Penilaian extends CI_Model
 
 	            $tugas_dinas =$this->db->query("SELECT distinct date_format(tanggal_scan, '%Y-%m-%d') as tanggal_scan FROM absensi WHERE io_mode=11 and nik='$nik' and (tanggal_scan BETWEEN '$masa-01 00:00:01' and '$masa-31 23:59:59')");  
 
+	            $hadir2 =$hadir->num_rows();
+
 	    		$data['nama'] =$key['alias'];
 	    		$data['nik'] =$key['nik'];
 	    		$data['nama'] =$key['first_name']." ".$key['last_name'];
 	    		$data['tahun'] =$tahun;
 	    		$data['bulan'] =$bulan;
-	    		$data['hadir'] =$hadir->num_rows();    
+	    		$data['hadir'] =$hadir2;    
 	    		$data['sakit'] =$sakit->num_rows();    
 	    		$data['izin'] =$izin->num_rows();    
 	    		$data['tanpa_ket'] =$tanpa_ket->num_rows();    

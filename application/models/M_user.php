@@ -9,6 +9,10 @@ class M_user extends CI_Model
 	  return $query;	  
 	}   
 
+	 public function view(){
+    return $this->db->get('siswa')->result(); // Tampilkan semua data yang ada di tabel siswa
+  }
+
 	function detail($where)
 	{ 
 	  $this->db->where($where);
