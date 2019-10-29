@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 18, 2019 at 06:44 AM
--- Server version: 10.3.16-MariaDB
--- PHP Version: 7.3.7
+-- Waktu pembuatan: 29 Okt 2019 pada 16.44
+-- Versi server: 10.3.16-MariaDB
+-- Versi PHP: 7.3.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `absensi`
+-- Struktur dari tabel `absensi`
 --
 
 CREATE TABLE `absensi` (
@@ -36,7 +36,7 @@ CREATE TABLE `absensi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `absensi`
+-- Dumping data untuk tabel `absensi`
 --
 
 INSERT INTO `absensi` (`id_absen`, `nik`, `io_mode`, `tanggal_scan`) VALUES
@@ -56,12 +56,21 @@ INSERT INTO `absensi` (`id_absen`, `nik`, `io_mode`, `tanggal_scan`) VALUES
 (14, '197210191999032001', 2, '2019-10-10 15:51:51'),
 (15, '197311302000031001', 2, '2019-10-10 15:53:35'),
 (16, '199012182012121002', 3, '2019-10-10 16:05:28'),
-(17, '198312092012121001', 1, '2019-10-16 20:24:09');
+(17, '198312092012121001', 1, '2019-10-16 20:24:09'),
+(21, '197311302000031001', 0, '2019-10-09 23:00:00'),
+(22, '197210191999032001', 0, '2019-10-09 23:00:00'),
+(23, '199012182012121002', 0, '2019-10-09 23:00:00'),
+(24, '197311302000031001', 2, '2019-10-10 04:00:00'),
+(25, '197210191999032001', 2, '2019-10-10 04:01:00'),
+(26, '199012182012121002', 2, '2019-10-10 04:03:00'),
+(27, '197311302000031001', 1, '2019-10-10 08:00:00'),
+(28, '197210191999032001', 1, '2019-10-10 08:01:00'),
+(29, '199012182012121002', 1, '2019-10-10 08:03:00');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mode`
+-- Struktur dari tabel `mode`
 --
 
 CREATE TABLE `mode` (
@@ -71,7 +80,7 @@ CREATE TABLE `mode` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mode`
+-- Dumping data untuk tabel `mode`
 --
 
 INSERT INTO `mode` (`io_mode`, `io_name`, `icon`) VALUES
@@ -81,12 +90,17 @@ INSERT INTO `mode` (`io_mode`, `io_name`, `icon`) VALUES
 (3, 'Kembali Istirahat', '<i class=\"fa fa-exchange\" style=\"font-size:20px;color:green\"></i>'),
 (4, 'Masuk Lembur', '<i class=\"fa fa-bullseye\" style=\"font-size:20px;color:green\"></i>'),
 (5, 'Keluar Lembur', '<i class=\"fa fa-bullseye\" style=\"font-size:20px;color:green\"></i>'),
-(6, 'Invalid', '<i class=\"fa fa-crosshairs\" style=\"font-size:20px;color:red\"></i>');
+(6, 'Invalid', '<i class=\"fa fa-crosshairs\" style=\"font-size:20px;color:red\"></i>'),
+(7, 'Sakit', '<i class=\"fa fa-exchange\" style=\"font-size:20px;color:green\"></i>'),
+(8, 'Izin', '<i class=\"fa fa-bullseye\" style=\"font-size:20px;color:green\"></i>'),
+(9, 'Tanpa Keterangan', '<i class=\"fa fa-bullseye\" style=\"font-size:20px;color:green\"></i>'),
+(10, 'Cuti', '<i class=\"fa fa-crosshairs\" style=\"font-size:20px;color:red\"></i>'),
+(11, 'Tugas Dinas', '<i class=\"fa fa-crosshairs\" style=\"font-size:20px;color:red\"></i>');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nilai`
+-- Struktur dari tabel `nilai`
 --
 
 CREATE TABLE `nilai` (
@@ -98,7 +112,7 @@ CREATE TABLE `nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nilai`
+-- Dumping data untuk tabel `nilai`
 --
 
 INSERT INTO `nilai` (`id`, `nik`, `date_input`, `nilai`, `keterangan`) VALUES
@@ -107,7 +121,20 @@ INSERT INTO `nilai` (`id`, `nik`, `date_input`, `nilai`, `keterangan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `siswa`
+--
+
+CREATE TABLE `siswa` (
+  `nis` varchar(11) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `jenis_kelamin` varchar(10) NOT NULL,
+  `alamat` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -125,20 +152,20 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id_user`, `nik`, `first_name`, `last_name`, `gender`, `alias`, `jenis_user`, `username`, `password`, `deleted`, `foto`) VALUES
 (3, '197311302000031001', 'Prof. I', 'Gede Pasek Suta Wijaya,  ST.,MT.,D.Eng.', 0, 'I Gede Pasek Suta Wijaya', 3, 'pasek', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
-(4, '197210191999032001', 'Dr.Eng. Budi', 'Irmawati, S.Kom.,MT.', 1, 'Budi Irmawati, S.Kom.,MT', 2, 'budi', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(4, '197210191999032001', 'Dr.Eng. Budi', 'Irmawati, S.Kom.,MT.', 1, 'Budi Irmawati, S.Kom.,MT', 2, 'budi', '21232f297a57a5a743894a0e4a801fc3', 0, '197210191999032001.png'),
 (5, '199012182012121002', 'Ario', 'Yudo Husodo, ST.,MT.', 0, 'Ario Yudo Husodo, ST.,MT', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
-(6, '198312092012121001', 'Andy', 'Hidayat Jatmika,ST.,M.Kom.', 0, 'Andy Hidayat Jatmika,ST.', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(6, '198312092012121001', 'Andy', 'Hidayat Jatmika,ST.,M.Kom.', 0, 'Andy Hidayat Jatmika,ST.', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, '198312092012121001.png'),
 (7, '198507072014042001', 'Royana', 'Afwani, ST.,MT.', 1, 'Royana Afwani, ST.,MT.', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
 (8, '198608132018032001', 'Nadiyasari', 'Agitha, S.Kom., M.MT.', 1, 'Nadiyasari Agitha, S.Kom', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
-(9, '198609132015041001', 'Ariyan', 'Zubaidi, S.Kom.,MT.', 0, 'Ariyan Zubaidi, S.Kom.,M', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(9, '198609132015041001', 'Ariyan', 'Zubaidi, S.Kom.,MT.', 0, 'Ariyan Zubaidi, S.Kom.,M', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, '198609132015041001.png'),
 (10, '198606222015041002', 'Fitri', 'Bimantoro, ST.,M.Kom.', 0, 'Fitri Bimantoro, ST.,M.K', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
 (2, '196604032006042001', 'Ir.', 'Sri Endang Anjarwani, M.Kom.', 1, 'Ir. Sri Endang Anjarwani', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
-(1, '197005141999031002', 'Ida', 'Bagus Ketut Widiartha,  ST.,MT.', 0, 'Ida Bagus Ketut Widiarth', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
+(1, '197005141999031002', 'Ida', 'Bagus Ketut Widiartha,  ST.,MT.', 0, 'Ida Bagus Ketut Widiarth', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, '197005141999031002.png'),
 (11, '198211182015041001', 'I', 'Wayan Agus Arimbawa, ST.,M.Eng.', 0, 'I Wayan Agus Arimbawa, S', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
 (12, '198311252015041002', 'Moh.', 'Ali Albar, ST.,M.Eng.', 0, 'Moh. Ali Albar, ST.,M.En', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
 (13, '197902242005011001', 'Azwar', 'Faridi, ST', 0, 'Azwar Faridi., ST', 3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 0, ''),
@@ -158,47 +185,53 @@ INSERT INTO `user` (`id_user`, `nik`, `first_name`, `last_name`, `gender`, `alia
 --
 
 --
--- Indexes for table `absensi`
+-- Indeks untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
   ADD PRIMARY KEY (`id_absen`);
 
 --
--- Indexes for table `mode`
+-- Indeks untuk tabel `mode`
 --
 ALTER TABLE `mode`
   ADD PRIMARY KEY (`io_mode`);
 
 --
--- Indexes for table `nilai`
+-- Indeks untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `siswa`
+--
+ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`nis`);
+
+--
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `absensi`
+-- AUTO_INCREMENT untuk tabel `absensi`
 --
 ALTER TABLE `absensi`
-  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_absen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT for table `nilai`
+-- AUTO_INCREMENT untuk tabel `nilai`
 --
 ALTER TABLE `nilai`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
