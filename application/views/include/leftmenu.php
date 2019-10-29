@@ -20,7 +20,7 @@
 
         <li class="header">MAIN NAVIGATION</li>
 
-        <?php if ($this->session->userdata('jenis_user')=="2")
+        <?php if ($this->session->userdata('jenis_user')=="1")
         { ?>
         <li>
           <a href="<?php echo base_url()."User"; ?>">
@@ -39,15 +39,20 @@
             <i class="fa fa-archive"></i><span>Rekap Absensi</span>
           </a>
         </li>
-
         <?php 
-        if ($this->session->userdata('jenis_user')=="2")
-        { ?> 
-          <li>
+        if ($this->session->userdata('jenis_user')=="1")
+        { ?>
+
+         <li>
             <a href="<?php echo base_url()."InputRekapAbsensi"; ?>">
               <i class="fa fa-archive"></i><span>Input Rekap Absensi</span>
             </a>
-          </li>  
+          </li> 
+        <?php } ?> 
+
+        <?php 
+        if ($this->session->userdata('jenis_user')=="2")
+        { ?>  
         
           <li>
           <a href="<?php echo base_url()."PenilaianDosen"; ?>">

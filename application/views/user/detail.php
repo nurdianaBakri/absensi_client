@@ -111,7 +111,7 @@
                 </div> 
 
                 <div class="form-group row">
-                   <label for="foto" class="col-sm-2">Foto (Kosongkan jika tidak ingin merubah foto) </label>
+                   <label for="foto" class="col-sm-2">Foto (Kosongkan jika tidak ingin merubah foto, *max : 2MB) </label>
                   <div class="col-sm-4">
                      <input type="file" class="form-control" id="foto" name="foto">
                   </div>

@@ -216,6 +216,7 @@ class User extends CI_Controller {
 
     public function do_update()
     {
+        $pesan="";
         $nik =$this->input->post('nik');
         $data = array(
             'nik' =>$nik, 
@@ -234,8 +235,9 @@ class User extends CI_Controller {
 
         // var_dump($_FILES["foto"]["error"]);
 
-        if($_FILES["foto"]["error"] == 4) {
-        //means there is no file uploaded
+        if($_FILES["foto"]["error"] == 4)
+        {
+            $pesan.= "<li>".$_FILES["foto"]["error"]."</li>"; 
         }
         else
         {
@@ -243,10 +245,11 @@ class User extends CI_Controller {
             if ($upload['berhasil']==TRUE)
             {
                 $data['foto'] = $nik.".png";
+                $pesan.= "<li>Proses update foto user berhasil </li>"; 
             }
             else
-            {
-                $this->session->set_flashdata('pesan',"Proses update foto user gagal, silahkan coba kebali ");
+            { 
+                $pesan.= "<li>".$upload['error']."</li>"; 
             }
         }
       
@@ -258,13 +261,13 @@ class User extends CI_Controller {
         $hasil = $this->M_user->update($where,$data);
        if ($hasil==true)
        {
-            $this->session->set_flashdata('pesan',"Proses update user berasil");
+            $pesan.= "<li>Proses update user berasil</li>";  
        }
        else
        {
-        $this->session->set_flashdata('pesan',"Proses update user gagal, silahkan coba kebali ");
-       }
-        
+            $pesan.= "<li>Proses update user gagal, silahkan coba kebali </li>";  
+       } 
+        $this->session->set_flashdata('pesan',$pesan);
         redirect("User/detail/".$id_user); // Redirect ke halaman awal (ke controller siswa fungsi index)   
     }
 

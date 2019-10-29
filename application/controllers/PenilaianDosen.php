@@ -27,13 +27,43 @@ class PenilaianDosen extends CI_Controller {
             $getallData['data'] = array();
         }
 
+        //get bulan dan tahun absensi
+        $ThnBulan = $this->M_Penilaian->getTahunDanBulan();
+        if ($ThnBulan->num_rows()>0) 
+        {
+            $getallData['tahunBulan']=$ThnBulan->result_array();
+        }
+        else
+        {
+            $getallData['tahunBulan'] = array();
+        }
+
         $this->load->view("include/header",$getallData);
         $this->load->view("include/topmenu");
         $this->load->view("include/leftmenu" );
-        $this->load->view("penilaian/penilaian" ,$getallData);
+        $this->load->view("penilaian/form_nilai2" ,$getallData); 
         $this->load->view("include/footer");
     }
 
+     public function getPenilaian()
+    {
+        $masa = $this->input->post('masa');  
+        $data['title'] = "REKAP KEHADIRAN DOSEN";
+        $data['title_rekap'] = "REKAP KEHADIRAN DOSEN TEKNIK INFORMATIKA UNRAM BULAN ".substr($masa, 5)." 2019";
+        $nik = $this->input->post('nik');
+        
+        //get data penilaian berdasarkan nik dan masa 
+        $data['data'] = $this->M_Penilaian->getPenilaian($nik,$masa);
+
+        $this->load->view("include/header",$data);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("penilaian/penilaian2" ,$data); 
+        $this->load->view("include/footer");
+          
+        // var_dump($data); 
+    }
+ 
     function nilai($nik)
     {
         $getallData['title'] = "Form Penilaian Dosen ".$nik;
