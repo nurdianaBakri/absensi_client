@@ -50,6 +50,21 @@
                     <!-- DataTables -->
                     <link rel="stylesheet" href="<?php echo base_url()."assets"; ?>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
 
+                    <?php
+                    $link=""; 
+                    if (sizeof($data)>1)
+                    {
+                      # semua
+                      $link = "PenilaianDosen/export/semua/".$data[0]['tahun']."-".$data[0]['bulan'];
+                    }
+                    else
+                    {
+                      $link = "PenilaianDosen/export/".$data[0]['nik']."/".$data[0]['tahun']."-".$data[0]['bulan'];
+                    }
+                    ?>
+
+                    <a class="btn btn-success" href="<?= base_url().$link; ?>">Export ke Microsoft Excel</a>
+
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
                       <tr>
@@ -65,6 +80,7 @@
                         <th>TK</th> 
                         <th>T</th> 
                         <th>%</th> 
+                        <th>Nilai</th> 
                       </tr>
                       </thead>
                       <tbody>
@@ -86,6 +102,7 @@
                                   <td><?php echo $key['tanpa_ket']; ?></td> 
                                   <td><?php echo $key['tugas_dinas']; ?></td> 
                                   <td><?php echo $key['persen']; ?></td> 
+                                  <td><?php  echo $key['nilai']; ?></td> 
                                 </tr>
                             <?php   
                          }  ?>
@@ -106,23 +123,5 @@
   </div>
 
 <script type="text/javascript">
-  /*$(document).ready(function(){
-   var elem='DivIdToPrint';
-    
-    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
-
-    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
-    mywindow.document.write('</head><body >');
-    mywindow.document.write(document.getElementById(elem).innerHTML);
-    mywindow.document.write('</body></html>');
-
-    mywindow.document.close(); // necessary for IE >= 10
-    mywindow.focus();*/ // necessary for IE >= 10*/
-
-   /* mywindow.print();
-    mywindow.close();
-
-    return true;
-
-  });*/
+ 
 </script>

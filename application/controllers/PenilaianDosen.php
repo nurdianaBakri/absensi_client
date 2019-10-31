@@ -51,17 +51,16 @@ class PenilaianDosen extends CI_Controller {
         $data['title'] = "REKAP KEHADIRAN DOSEN";
         $data['title_rekap'] = "REKAP KEHADIRAN DOSEN TEKNIK INFORMATIKA UNRAM BULAN ".substr($masa, 5)." 2019";
         $nik = $this->input->post('nik');
-        
-        //get data penilaian berdasarkan nik dan masa 
-        // $data['data'] = $this->M_Penilaian->getPenilaian($nik,$masa);
 
-        // $this->load->view("include/header",$data);
-        // $this->load->view("include/topmenu");
-        // $this->load->view("include/leftmenu" );
-        // $this->load->view("penilaian/penilaian2" ,$data); 
-        // $this->load->view("include/footer"); 
+        // get data penilaian berdasarkan nik dan masa 
+        $data['data'] = $this->M_Penilaian->getPenilaian($nik,$masa);
 
-        $this->export($nik, $masa);
+        $this->load->view("include/header",$data);
+        $this->load->view("include/topmenu");
+        $this->load->view("include/leftmenu" );
+        $this->load->view("penilaian/penilaian2" ,$data); 
+        $this->load->view("include/footer"); 
+        // $this->export($nik, $masa);
     }
 
     public function export($nik,$masa){
@@ -121,6 +120,7 @@ class PenilaianDosen extends CI_Controller {
     $excel->setActiveSheetIndex(0)->setCellValue('J3', "TK"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->setActiveSheetIndex(0)->setCellValue('K3', "T"); // Set kolom E3 dengan tulisan "ALAMAT"
     $excel->setActiveSheetIndex(0)->setCellValue('L3', "%"); // Set kolom E3 dengan tulisan "ALAMAT"
+    $excel->setActiveSheetIndex(0)->setCellValue('M3', "Nilai"); // Set kolom E3 dengan tulisan "ALAMAT"
     // Apply style header yang telah kita buat tadi ke masing-masing kolom header
     $excel->getActiveSheet()->getStyle('A3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('B3')->applyFromArray($style_col);
@@ -134,6 +134,7 @@ class PenilaianDosen extends CI_Controller {
     $excel->getActiveSheet()->getStyle('J3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('K3')->applyFromArray($style_col);
     $excel->getActiveSheet()->getStyle('L3')->applyFromArray($style_col);
+    $excel->getActiveSheet()->getStyle('M3')->applyFromArray($style_col);
     // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
     $raport = $this->M_Penilaian->getPenilaian($nik,$masa);
     $no = 1; // Untuk penomoran tabel, di awal set dengan 1
@@ -153,6 +154,7 @@ class PenilaianDosen extends CI_Controller {
       $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow, $data['tanpa_ket']);
       $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow, $data['tugas_dinas']);
       $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow, $data['persen']);
+      $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow, $data['nilai']);
       
       // Apply style row yang telah kita buat tadi ke masing-masing baris (isi tabel)
       $excel->getActiveSheet()->getStyle('A'.$numrow)->applyFromArray($style_row);
@@ -167,6 +169,7 @@ class PenilaianDosen extends CI_Controller {
       $excel->getActiveSheet()->getStyle('J'.$numrow)->applyFromArray($style_row);
       $excel->getActiveSheet()->getStyle('K'.$numrow)->applyFromArray($style_row);
       $excel->getActiveSheet()->getStyle('L'.$numrow)->applyFromArray($style_row);
+      $excel->getActiveSheet()->getStyle('M'.$numrow)->applyFromArray($style_row);
       
       $no++; // Tambah 1 setiap kali looping
       $numrow++; // Tambah 1 setiap kali looping
@@ -184,6 +187,7 @@ class PenilaianDosen extends CI_Controller {
     $excel->getActiveSheet()->getColumnDimension('J')->setWidth(12); // Set width kolom E
     $excel->getActiveSheet()->getColumnDimension('K')->setWidth(12); // Set width kolom E
     $excel->getActiveSheet()->getColumnDimension('L')->setWidth(12); // Set width kolom E
+    $excel->getActiveSheet()->getColumnDimension('M')->setWidth(12); // Set width kolom E
     
     // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
     $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);

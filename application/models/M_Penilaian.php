@@ -65,8 +65,7 @@ class M_Penilaian extends CI_Model
 	    		$data['izin'] =$izin->num_rows();    
 	    		$data['tanpa_ket'] =$tanpa_ket->num_rows();    
 	    		$data['cuti'] =$cuti->num_rows();    
-	    		$data['tugas_dinas'] =$tugas_dinas->num_rows();    
-	    		// $data['query'] ="SELECT distinct date_format(tanggal_scan, '%Y-%m-%d') as tanggal_scan FROM absensi WHERE io_mode!=6 and nik='$nik' and (tanggal_scan BETWEEN '$masa-01 00:00:01' and '$masa-31 23:59:59')";  
+	    		$data['tugas_dinas'] =$tugas_dinas->num_rows();  
 
 	    		$ignore = array(1,6); 
 	    		//get jumlah hari kerja 
@@ -81,6 +80,8 @@ class M_Penilaian extends CI_Model
 	    		{
 	    			$data['persen'] = round((($data['hadir']/$jml_hari_kerja)*100),1);
 	    		} 
+
+	    		$data['nilai'] = $this->hitungNilai($data['hadir'],$data['tugas_dinas'],$jml_hari_kerja);
 
 	    		$data2[]=$data;
 	    	} 
@@ -135,6 +136,8 @@ class M_Penilaian extends CI_Model
     			$data['persen'] = round((($data['hadir']/$jml_hari_kerja)*100),1);
     		} 
 
+    		$data['nilai'] = $this->hitungNilai($data['hadir'],$data['tugas_dinas'],$jml_hari_kerja);
+
     		$data2[]=$data;
     		return $data2;
 		}
@@ -155,7 +158,39 @@ class M_Penilaian extends CI_Model
 	    }
 	    return $count;
 	}
-// echo countDays(2013, 1, array(0, 6)); // 23
+	// echo countDays(2013, 1, array(0, 6)); // 23
+
+	public function hitungNilai($hadir,$tugas_dinas,$jml_hari_kerja)
+	{
+		$nilaiAngka = (($hadir + $tugas_dinas) / $jml_hari_kerja) *100;
+
+	      // var_dump($nilaiAngka);
+
+	      if ($nilaiAngka>=80)
+	      {
+	        return "A";
+	      }
+	      else if (($nilaiAngka>=68) && ($nilaiAngka<=79.9))
+	      {
+	        return "B";
+	      }
+	      else if (($nilaiAngka>=56) && ($nilaiAngka<=67.9))
+	      {
+	        return "C";
+	      }
+	      else if (($nilaiAngka>=45) && ($nilaiAngka<=55.9))
+	      {
+	        return "D";
+	      }
+	      else if (($nilaiAngka>=0) && ($nilaiAngka<=44.9))
+	      {
+	        return "E";
+	      }
+	      else
+	      {
+	        return "Undefinde";
+	      }
+	}
  
 }
 ?>
