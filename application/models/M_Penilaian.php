@@ -79,7 +79,7 @@ class M_Penilaian extends CI_Model
 	    		}
 	    		else
 	    		{
-	    			$data['persen'] =  ($jml_hari_kerja/$data['hadir'])*100;
+	    			$data['persen'] = round((($data['hadir']/$jml_hari_kerja)*100),1);
 	    		} 
 
 	    		$data2[]=$data;
@@ -132,7 +132,7 @@ class M_Penilaian extends CI_Model
     		}
     		else
     		{
-    			$data['persen'] =  ($jml_hari_kerja/$data['hadir'])*100;
+    			$data['persen'] = round((($data['hadir']/$jml_hari_kerja)*100),1);
     		} 
 
     		$data2[]=$data;

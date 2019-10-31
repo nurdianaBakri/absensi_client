@@ -92,18 +92,21 @@ class M_absensi extends CI_Model {
 
 	public function export($awal, $akhir)
 	{
-        $data2 = array();
 		$data_pertanggal = array();
     	$io_name="";
+        $q1 ="SELECT DISTINCT(DATE(tanggal_scan)) as tanggal_scan FROM absensi WHERE DATE(tanggal_scan) >= '$awal' AND DATE(tanggal_scan) <= '$akhir' ORDER BY tanggal_scan DESC";
 
-        $hasil_tanggal =$this->db->query("SELECT DISTINCT(DATE(tanggal_scan)) as tanggal_scan FROM absensi WHERE DATE(tanggal_scan) >= '$awal' AND DATE(tanggal_scan) <= '$akhir' ORDER BY tanggal_scan DESC")->result_array(); 
+        $hasil_tanggal =$this->db->query($q1)->result_array(); 
 
         foreach ($hasil_tanggal as $hasil_tanggal)
         {
+            $data2 = array();
+
             $icon='';
             $tanggal_scan = $hasil_tanggal['tanggal_scan'];
+            $q2 ="SELECT tanggal_scan, nik, io_mode, id_absen  FROM absensi  where tanggal_scan like '$tanggal_scan%' ORDER by nik DESC";
 
-            $hasil =$this->db->query("SELECT tanggal_scan, nik, io_mode, id_absen  FROM absensi  where tanggal_scan >= '$tanggal_scan 00:00:00' ORDER by nik DESC")->result_array(); 
+            $hasil =$this->db->query($q2)->result_array(); 
 
             foreach ($hasil as $hasil)
             {
@@ -132,12 +135,16 @@ class M_absensi extends CI_Model {
                 $data['io_name'] =$io_name; 
                 $data['io_icon'] =$icon; 
                 $data['id_absen'] =$hasil['id_absen']; 
-                $data['waktu'] = substr($hasil['tanggal_scan'], 12); 
+                $data['waktu'] = substr($hasil['tanggal_scan'], 11); 
+                $data['date_scan'] = $hasil['tanggal_scan']; 
+                $data['q2'] = $q2; 
                 $data2[]=$data; 
             }
 
             $data_pertanggal[] = array(
                 'tanggal' => $tanggal_scan, 
+                'q1' => $q1, 
+                'hasil_tanggal' => $hasil_tanggal, 
                 'data_scan' => $data2, 
             );
         }

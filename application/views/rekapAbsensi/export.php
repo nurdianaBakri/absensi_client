@@ -48,7 +48,7 @@
                     <!-- Ionicons -->
                     <link rel="stylesheet" href="<?php echo base_url()."assets"; ?>/bower_components/Ionicons/css/ionicons.min.css">
                     <!-- DataTables -->
-                    <link rel="stylesheet" href="<?php echo base_url()."assets"; ?>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+                    <link rel="stylesheet" href="<?php echo base_url()."assets"; ?>/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">                   
 
                     <table id="example1" class="table table-bordered table-striped">
                       <thead>
@@ -117,23 +117,23 @@
   </div>
 
 <script type="text/javascript">
-  $(document).ready(function(){
-   var elem='DivIdToPrint';
+  // $(document).ready(function(){
+  //  var elem='DivIdToPrint';
     
-    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+  //   var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
-    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
-    mywindow.document.write('</head><body >');
-    mywindow.document.write(document.getElementById(elem).innerHTML);
-    mywindow.document.write('</body></html>');
+  //   mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+  //   mywindow.document.write('</head><body >');
+  //   mywindow.document.write(document.getElementById(elem).innerHTML);
+  //   mywindow.document.write('</body></html>');
 
-    mywindow.document.close(); // necessary for IE >= 10
-    mywindow.focus(); // necessary for IE >= 10*/
+  //   mywindow.document.close(); 
+  //   mywindow.focus();
 
-    mywindow.print();
-    mywindow.close();
+  //   mywindow.print();
+  //   mywindow.close();
 
-    return true;
+  //   return true;
 
-  });
+  // });
 </script>
