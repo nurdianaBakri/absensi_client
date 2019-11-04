@@ -52,8 +52,7 @@
                     }
                     
                     // Buat sebuah tag form untuk proses import data ke database
-                    echo "<form method='post' action='".base_url("InputRekapAbsensi/DoImport")."'>"; 
-
+                    echo "<form method='post' action='".base_url("InputRekapAbsensi/DoImport")."'>";  
                     ?>
    
 

@@ -74,7 +74,7 @@ class InputRekapAbsensi extends CI_Controller {
             // Cek $numrow apakah lebih dari 1
             // Artinya karena baris pertama adalah nama-nama kolom
             // Jadi dilewat saja, tidak usah diimport
-            if(($numrow > 1) && $row['A']!=null){ 
+            if(($numrow > 1) && $row['B']!=null){ 
 
                 //cek apaka nik ==null
                 // if ($row['B']==null || $row['B']=="")
@@ -84,9 +84,12 @@ class InputRekapAbsensi extends CI_Controller {
                 // }
 
                 $io_mode=0;
-                if($row['G']=="Scan Masuk"){
-                    $io_mode = 0;
-                }
+                $io_mode_string = $row['G'];
+
+                $this->db->where('io_name',$io_mode_string);
+                $this->db->select('io_mode');
+                $io_mode = $this->db->get('mode')->row()->io_mode; 
+                
 
                 //sesuaikan FORMAT TANGGAL 
                 //tahun/bulan/hari

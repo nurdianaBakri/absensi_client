@@ -117,23 +117,23 @@
   </div>
 
 <script type="text/javascript">
-  // $(document).ready(function(){
-  //  var elem='DivIdToPrint';
+  $(document).ready(function(){
+   var elem='DivIdToPrint';
     
-  //   var mywindow = window.open('', 'PRINT', 'height=400,width=600');
+    var mywindow = window.open('', 'PRINT', 'height=400,width=600');
 
-  //   mywindow.document.write('<html><head><title>' + document.title  + '</title>');
-  //   mywindow.document.write('</head><body >');
-  //   mywindow.document.write(document.getElementById(elem).innerHTML);
-  //   mywindow.document.write('</body></html>');
+    mywindow.document.write('<html><head><title>' + document.title  + '</title>');
+    mywindow.document.write('</head><body >');
+    mywindow.document.write(document.getElementById(elem).innerHTML);
+    mywindow.document.write('</body></html>');
 
-  //   mywindow.document.close(); 
-  //   mywindow.focus();
+    mywindow.document.close(); 
+    mywindow.focus();
 
-  //   mywindow.print();
-  //   mywindow.close();
+    mywindow.print();
+    mywindow.close();
 
-  //   return true;
+    return true;
 
-  // });
+  });
 </script>
