@@ -55,10 +55,10 @@ class M_absensi extends CI_Model {
 		$this->load->library('upload'); // Load librari upload
 		
 		$config['upload_path'] = './excel/';
-		$config['allowed_types'] = 'xlsx';
+		$config['allowed_types'] = 'xlsx|xls';
 		$config['max_size']	= '2048';
 		$config['overwrite'] = true;
-		$config['file_name'] = $filename;
+		$config['file_name'] = $filename.".xlsx";
 	
 		$this->upload->initialize($config); // Load konfigurasi uploadnya
 		if($this->upload->do_upload('fileName')){ // Lakukan upload dan Cek jika proses upload berhasil

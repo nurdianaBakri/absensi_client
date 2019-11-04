@@ -36,6 +36,7 @@ class InputRekapAbsensi extends CI_Controller {
             include APPPATH.'third_party/PHPExcel/PHPExcel.php';
             
             $excelreader = new PHPExcel_Reader_Excel2007();
+            // $excelreader = PHPExcel_IOFactory::createReader('Excel5');
             $loadexcel = $excelreader->load('excel/'.$this->filename.'.xlsx'); // Load file yang tadi diupload ke folder excel
             $sheet = $loadexcel->getActiveSheet()->toArray(null, true, true ,true);
             
@@ -73,14 +74,32 @@ class InputRekapAbsensi extends CI_Controller {
             // Cek $numrow apakah lebih dari 1
             // Artinya karena baris pertama adalah nama-nama kolom
             // Jadi dilewat saja, tidak usah diimport
-            if(($numrow > 1) && $row['A']!=null){  
+            if(($numrow > 1) && $row['A']!=null){ 
+
+                //cek apaka nik ==null
+                // if ($row['B']==null || $row['B']=="")
+                // {
+                //     # cek nik dengan nama yg sama 
+                //     $this->db->where('');
+                // }
+
+                $io_mode=0;
+                if($row['G']=="Scan Masuk"){
+                    $io_mode = 0;
+                }
+
+                //sesuaikan FORMAT TANGGAL 
+                //tahun/bulan/hari
+                $tahun=substr($row['D'], 6,4);
+                $bulan=substr($row['D'], 3,2);
+                $hari=substr($row['D'], 0,2);
 
                 // Kita push (add) array data ke variabel data
                 array_push($data_input, array(
                     // 'nis'=>$row['A'], // Insert data nis dari kolom A di excel
-                    'nik'=>$row['A'], // Insert data nama dari kolom B di excel 
-                    'io_mode'=>$row['E'], // Insert data alamat dari kolom D di excel
-                    'tanggal_scan'=>$row['C']." ".$row['D'], // Insert data alamat dari kolom D di excel
+                    'nik'=>$row['B'], // Insert data nama dari kolom B di excel 
+                    'io_mode'=>$io_mode, // Insert data alamat dari kolom D di excel
+                    'tanggal_scan'=>$tahun."-".$bulan."-".$hari." ".$row['E'], // Insert data alamat dari kolom D di excel
                 ));     
             }
             
@@ -89,6 +108,8 @@ class InputRekapAbsensi extends CI_Controller {
 
         // Panggil fungsi insert_multiple yg telah kita buat sebelumnya di model
         $cek1 = $this->M_absensi->insert_multiple("absensi", $data_input); 
+
+        // var_dump($data_input);
 
         $this->session->set_flashdata('pesan',"Proses import data selesai ");
         

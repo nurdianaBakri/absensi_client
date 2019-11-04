@@ -70,16 +70,17 @@
                     
                     $numrow = 1;
                     $kosong = 0;
+                    $dissable=false;
                     
                     // Lakukan perulangan dari data yang ada di excel
                     // $sheet adalah variabel yang dikirim dari controller
                     foreach($sheet as $row){ 
                       // Ambil data pada excel sesuai Kolom 
-                      $nik = $row['A']; // Ambil data NIS 
-                      $nama = $row['B']; // Ambil data NIS 
-                      $tanggal = $row['C']; // Ambil data NIS  
-                      $jam = $row['D']; // Ambil data NIS  
-                      $status = $row['E']; // Ambil data NIS 
+                      $nik = $row['B']; // Ambil data NIS 
+                      $nama = $row['C']; // Ambil data NIS 
+                      $tanggal = $row['D']; // Ambil data NIS  
+                      $jam = $row['E']; // Ambil data NIS  
+                      $status = $row['G']; // Ambil data NIS 
 
                       
                       // Cek jika semua data tidak diisi
@@ -93,13 +94,28 @@
                         // Validasi apakah semua data telah diisi
                         $tanggal_td = ( ! empty($tanggal))? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah  
                          $jam_td = ( ! empty($jam))? "" : " style='background: #E07171;'"; // Jika NIS kosong, beri warna merah  
-                        $nik_td = ( ! empty($nik))? "" : " style='background: #E07171;'"; // Jika Nama kosong, beri warna merah 
+
+                         if (empty($nik) || $nik=="-")
+                         {
+                           $nik_td =" style='background: #E07171;'";
+                         }
+                         else
+                         {
+                          $nik_td ="";
+                         }
+                        // $nik_td = ( ! empty($nik) )? "" : " style='background: #E07171;'"; // Jika Nama kosong, beri warna merah 
+
+                        // $nik_td = ( $nik!="-")? "" : " style='background: #E07172;'"; // Jika Nama kosong, beri warna merah 
                         $nama_td = ( ! empty($nama))? "" : " style='background: #E07171;'"; // Jika Nama kosong, beri warna merah 
                         $status_td = ( ! empty($status))? "" : " style='background: #E07171;'"; // Jika Nama kosong, beri warna merah   
                         
                         // Jika salah satu data ada yang kosong
                         if(empty($tanggal) or empty($jam)  or empty($nik_td) or empty($nama_td) or empty($status_td) or empty($status) ){
                           $kosong++; // Tambah 1 variabel $kosong
+                        }
+
+                        if (empty($nik) || $nik=="-") {
+                          $dissable=true;
                         }
                         
                         echo "<tr>";
@@ -116,9 +132,21 @@
                     echo "</table>";
                      
                     echo "<hr>";
+
+                    // var_dump($dissable);
                     
                     // Buat sebuah tombol untuk mengimport data ke database
-                    echo "<button type='submit' name='import' class='btn btn-success'>Import</button>";
+                    if ($dissable==true)
+                    {
+                      echo "<button type='submit' name='import' class='btn btn-success' disabled>Import</button>";
+
+                      echo "<p style='color:red;'>NIK tidak boleh ada yang kosong</p>";
+                    }
+                    else
+                    {
+                      echo "<button type='submit' name='import' class='btn btn-success'>Import</button>";
+                    }
+                    
                     echo "<a href='".base_url("InputRekapAbsensi")."'>Cancel</a>"; 
                     
                     echo "</form>";  
