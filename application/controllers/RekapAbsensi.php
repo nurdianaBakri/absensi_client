@@ -17,6 +17,19 @@ class RekapAbsensi extends CI_Controller {
     {
         $getallData['title'] = "Rekap Absensi"; 
 
+        if ($this->session->userdata('jenis_user')!=1 || $this->session->userdata('jenis_user')!="1") {
+            $nik = $this->session->userdata('nik');
+            $this->db->where('nik',$nik);
+            $this->db->select('nik, last_name, first_name');
+            $data[]= $this->db->get('user')->row_array();
+            $getallData['pegawai'] = $data;
+        }
+        else
+        {
+            $this->db->select('nik, last_name, first_name');
+            $getallData['pegawai'] = $this->db->get('user')->result_array();
+        }            
+
         $this->load->view("include/header",$getallData);
         $this->load->view("include/topmenu");
         $this->load->view("include/leftmenu" );
@@ -28,8 +41,10 @@ class RekapAbsensi extends CI_Controller {
     {
         $awal = $this->input->post('awal');
         $akhir = $this->input->post('akhir');
+        $nik = $this->input->post('nik');
 
-        $data['data'] = $this->M_absensi->export($awal, $akhir);  
+        $data['data'] = $this->M_absensi->export($awal, $akhir, $nik); 
+        $data['last_q'] =$this->db->last_query(); 
         $data['title'] = "Rekap absensi ".$awal." sampai dengan ".$akhir;
 
         $this->load->view("include/header",$data);

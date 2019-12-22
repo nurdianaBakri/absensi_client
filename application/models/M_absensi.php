@@ -90,11 +90,20 @@ class M_absensi extends CI_Model {
 
     }
 
-	public function export($awal, $akhir)
+	public function export($awal, $akhir, $nik)
 	{
 		$data_pertanggal = array();
     	$io_name="";
-        $q1 ="SELECT DISTINCT(DATE(tanggal_scan)) as tanggal_scan FROM absensi WHERE DATE(tanggal_scan) >= '$awal' AND DATE(tanggal_scan) <= '$akhir' ORDER BY tanggal_scan DESC";
+        $q1="";
+
+        if ($nik=="semua")
+        {
+            $q1 ="SELECT DISTINCT(DATE(tanggal_scan)) as tanggal_scan FROM absensi WHERE DATE(tanggal_scan) >= '$awal' AND DATE(tanggal_scan) <= '$akhir' ORDER BY tanggal_scan DESC";
+        }
+        else
+        {
+            $q1 ="SELECT DISTINCT(DATE(tanggal_scan)) as tanggal_scan FROM absensi WHERE DATE(tanggal_scan) >= '$awal' AND DATE(tanggal_scan) <= '$akhir' and nik='$nik' ORDER BY tanggal_scan DESC";
+        }
 
         $hasil_tanggal =$this->db->query($q1)->result_array(); 
 
@@ -104,7 +113,15 @@ class M_absensi extends CI_Model {
 
             $icon='';
             $tanggal_scan = $hasil_tanggal['tanggal_scan'];
-            $q2 ="SELECT tanggal_scan, nik, io_mode, id_absen  FROM absensi  where tanggal_scan like '$tanggal_scan%' ORDER by nik DESC";
+
+            if ($nik=="semua")
+            {
+                $q2 ="SELECT tanggal_scan, nik, io_mode, id_absen FROM absensi  where tanggal_scan like '$tanggal_scan%' ORDER by nik DESC";
+            }
+            else
+            {
+                $q2 ="SELECT tanggal_scan, nik, io_mode, id_absen FROM absensi  where tanggal_scan like '$tanggal_scan%' and nik='$nik' ORDER by nik DESC";
+            }
 
             $hasil =$this->db->query($q2)->result_array(); 
 

@@ -48,18 +48,34 @@
 
               	<div class="form-group row">
       				    <label for="awal" class="col-sm-2 col-form-label">Tanggal Awal </label>
-      				    <div class="col-sm-3">
+      				    <div class="col-sm-4">
       				      <input type="date" required class="form-control" id="awal" name="awal">
       				    </div>
 
       				    <label for="akhir" class="col-sm-2 col-form-label">Tanggal Akhir </label>
-      				    <div class="col-sm-3">
+      				    <div class="col-sm-4">
       				      <input type="date" required class="form-control" id="akhir" name="akhir">
       				    </div>
-      				    <div class="col-sm-2">
-      				      <input type="submit" name="Filter" class="btn btn-success btn-block">
-      				    </div>
+      				 
       				 </div>			
+               <div class="form-group row">
+                  <label for="awal" class="col-sm-2 col-form-label">Nama Pegawai</label>
+                  <div class="col-sm-8">
+                    <select name="nik" class="form-control">
+                      <?php
+                      if ($this->session->userdata('jenis_user')==1 || $this->session->userdata('jenis_user')=="1") { ?>
+                            <option value="semua"> Semua</option>
+                      <?php }
+                        foreach ($pegawai as $key)
+                        { ?>
+                            <option value="<?php echo $key['nik'] ?>"> <?php echo $key['first_name']." ".$key['last_name']; ?></option>
+                        <?php }  ?>
+                    </select>
+                  </div> 
+                  <div class="col-sm-2">
+                    <input type="submit" name="Filter" class="btn btn-success btn-block">
+                  </div>
+               </div> 
 
               </form>
             </div>

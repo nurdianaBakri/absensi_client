@@ -19,6 +19,8 @@
       <div class="row">
         <div class="col-xs-12">
            <?php
+
+           // var_dump($last_q);
           if ($this->session->flashdata('pesan')!="") 
           { ?>
            <div class="alert alert-success alert-dismissible">
